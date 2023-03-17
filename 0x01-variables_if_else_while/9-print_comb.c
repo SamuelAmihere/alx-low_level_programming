@@ -9,13 +9,21 @@ int main(void)
 {
 	int i;
 
-	do {
+	i = 0;
+	while (i < 10)
+	{
 		putchar(i + '0');
-		putchar(',');
-		putchar(' ');
+		if (i == 9)
+		{
+			putchar('\n');
+		}
+		else
+		{
+			putchar(',');
+			putchar(' ');
+		}
 		i++;
-	} while (i < 9);
 
-	putchar('9');
+	}
 	return (0);
 }
