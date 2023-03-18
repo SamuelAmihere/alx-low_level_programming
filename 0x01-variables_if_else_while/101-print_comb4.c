@@ -17,7 +17,7 @@ int main(void)
 		{
 			for (j = 0; j <= 9; j++)
 			{
-				if (i < j)
+				if (i < j && x < i)
 				{
 					if (j == 0 || j == i)
 					{
@@ -29,7 +29,7 @@ int main(void)
 						putchar(i + '0');
 						putchar(j + '0');
 					}
-					if (i != 8)
+					if (x != 7)
 					{
 						putchar(',');
 						putchar(' ');
