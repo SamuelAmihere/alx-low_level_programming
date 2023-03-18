@@ -22,7 +22,12 @@ int main(void)
 				}
 				else
 				{
-					putchar(i + '0') + putchar(j + '0');
+					putchar(i + '0');
+					putchar(j + '0');
+				}
+				if (i != (10 -2))
+				{
+					putchar(',');
 					putchar(' ');
 				}
 			}
