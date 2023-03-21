@@ -3,9 +3,9 @@
 /**
  * jack_bauer - prints every minute of the day
  *
- * Return: Always 0 Success
+ * Return: void
  */
-int jack_bauer(void)
+void jack_bauer(void)
 {
 	int i;
 	int mins;
@@ -38,5 +38,4 @@ int jack_bauer(void)
 		}
 		_putchar('\n');
 	}
-	return (0);
 }
