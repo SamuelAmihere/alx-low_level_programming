@@ -18,21 +18,21 @@ void times_table(void)
 			ans = i * j;
 			if (ans < 10 && j > 0)
 			{
-				putchar(' ');
-				putchar(ans + '0');
+				_putchar(' ');
+				_putchar(ans + '0');
 			}
 			else if (ans < 10)
-				putchar(ans + '0');
+				_putchar(ans + '0');
 			else
 			{
-				putchar((ans / 10) + '0');
-				putchar((ans % 10) + '0');
+				_putchar((ans / 10) + '0');
+				_putchar((ans % 10) + '0');
 			}
 			if (j != 9)
 			{
-				putchar(',');
-				putchar(' ');
+				_putchar(',');
+				_putchar(' ');
 			}
-				putchar('\n');
+				_putchar('\n');
 	}
 }
