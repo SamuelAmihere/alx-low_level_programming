@@ -2,13 +2,13 @@
 #include "main.h"
 
 /**
- * main - Entry point
+ * print_alphabet - Produces alphabets in lowercase
  *
  * Return: Always 0 Success
  */
-int main(void)
+void print_alphabet(void)
 {
-	int x;
+	char x;
 
 	for (x = 'a'; x <= 'z'; x++)
 	{
