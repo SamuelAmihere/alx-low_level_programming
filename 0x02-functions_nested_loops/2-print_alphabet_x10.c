@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * print_alphabet_10x - Produces alphabets in lowercase 10 times
+ * print_alphabet_x10 - Produces alphabets in lowercase 10 times
  *
  * Return: void
  */
