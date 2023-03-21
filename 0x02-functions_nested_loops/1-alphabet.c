@@ -4,7 +4,7 @@
 /**
  * print_alphabet - Produces alphabets in lowercase
  *
- * Return: Always 0 Success
+ * Return: void
  */
 void print_alphabet(void)
 {
@@ -15,5 +15,4 @@ void print_alphabet(void)
 		_putchar(x);
 	}
 	_putchar('\n');
-	return (0);
 }
