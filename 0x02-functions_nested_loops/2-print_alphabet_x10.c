@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * print_alphabet - Produces alphabets in lowercase
+ * print_alphabet_10x - Produces alphabets in lowercase 10 times
  *
  * Return: void
  */
@@ -18,6 +18,6 @@ void print_alphabet_x10(void)
 			_putchar(x);
 		}
 		_putchar('\n');
-		i--;
+		i++;
 	}
 }
