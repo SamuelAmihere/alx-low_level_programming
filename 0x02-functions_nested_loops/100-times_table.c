@@ -25,11 +25,12 @@ void print_times_table(int n)
 			ans = i * j;
 			if (ans < 15 && j > 0)
 			{
-				_putchar('  ');
+				_putchar(' ');
 				_putchar(ans + '0');
 			}
 			else if (ans < 10)
 				_putchar(ans + '0');
+				_putchar(' ');
 			else
 			{
 				_putchar((ans / 10) + '0');
@@ -38,7 +39,7 @@ void print_times_table(int n)
 			if (j != n)
 			{
 				_putchar(',');
-				_putchar('  ');
+				_putchar(' ');
 			}
 			else
 				_putchar('\n');
