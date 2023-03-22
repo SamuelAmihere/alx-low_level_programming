@@ -24,7 +24,7 @@ int main(void)
 		first = second;
 		second = next_num;
 	}
-	printf("%ld", sum);
+	printf("%lu", sum);
 	putchar('\n');
 	return (0);
 }
