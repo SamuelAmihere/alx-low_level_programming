@@ -10,7 +10,6 @@ int main(void)
 	unsigned long int first, second, next_num, sum;
 	first = 1;
 	second = 2;
-	next_num;
 	sum = 0;
 
 	for (i = 1; i <= 33; i++)
