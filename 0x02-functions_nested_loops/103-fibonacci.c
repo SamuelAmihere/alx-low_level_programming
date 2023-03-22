@@ -6,21 +6,22 @@
  */
 int main(void)
 {
-	long i;
-	long first = 1;
-	long second = 2;
-	long next_num;
-	long sum = 0;
+	int i;
+	unsigned long int first, second, next, sum;
+	first = 1;
+	second = 2;
+	next_num;
+	sum = 0;
 
-	sum += second;
 	for (i = 1; i <= 33; i++)
 	{
-		next_num = first + second;
+		
 		if (next_num < 4000000)
 		{
 			if (first % 2 == 0)
 				sum += first;
 		}
+		next_num = first + second;
 		first = second;
 		second = next_num;
 	}
