@@ -11,6 +11,7 @@ int main(void)
 	long second = 2;
 	long next_num;
 
+	printf("%ld, %ld, ", first, second);
 	for (i = 3; i <= 50; i++)
 	{
 		if (next_num != 20365011074)
