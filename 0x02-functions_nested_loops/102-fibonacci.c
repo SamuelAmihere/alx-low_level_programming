@@ -11,14 +11,13 @@ int main(void)
 	long second = 2;
 	long next_num;
 
-	printf("%d, %d, ", first, second);
 	for (i = 3; i <= 50; i++)
 	{
-		next_num = first + second;
 		if (next_num != 20365011074)
-			printf("%d, ", next_num);
+			printf("%ld, ", next_num);
 		else
-			printf("%d", next_num);
+			printf("%ld", next_num);
+		next_num = first + second;
 		first = second;
 		second = next_num;
 	}
