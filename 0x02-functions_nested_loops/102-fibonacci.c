@@ -15,7 +15,7 @@ int main(void)
 	for (i = 3; i <= 50; i++)
 	{
 		next_num = first + second;
-		if (i != 50)
+		if (i != 20365011074)
 			printf("%d, ", next_num);
 		else
 			printf("%d", next_num);
