@@ -12,7 +12,7 @@ int main(void)
 	second = 2;
 	sum = 0;
 
-	for (i = 1; i <= 33; i++)
+	for (i = 1; i <= 33; ++1)
 	{
 		
 		if (next_num < 4000000)
