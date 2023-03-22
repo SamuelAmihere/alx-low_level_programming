@@ -13,7 +13,7 @@ int main(void)
 	second = 2;
 
 	printf("%lu, %lu, ", first, second);
-	for (i = 3; i <= 98; i++)
+	for (i = 1; i <= 91; i++)
 	{
 		next_num = first + second;
 		if (i != 98)
