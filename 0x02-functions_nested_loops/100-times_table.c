@@ -21,13 +21,10 @@ void print_times_table(int n)
 			if (n < 15 && n > 0)
 			{
 				ans = i * j;
-				if (ans < 10 && j > 0)
+				if (ans < 10)
 				{
-					_putchar(' ');
 					_putchar(ans + '0');
 				}
-				else if (ans < 10)
-					_putchar(ans + '0');
 				else
 				{
 					_putchar((ans / 10) + '0');
