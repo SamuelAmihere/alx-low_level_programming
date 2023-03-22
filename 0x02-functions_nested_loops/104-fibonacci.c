@@ -8,6 +8,9 @@ int main(void)
 {
 	int i;
 	unsigned long int first, second, next_num;
+	
+	first = 1;
+	second = 2;
 
 	printf("%lu, %lu, ", first, second);
 	for (i = 3; i <= 98; i++)
