@@ -24,34 +24,34 @@ void print_times_table(int n)
 		for (j = 0; j < n; j++)
 		{
 			ans = i * j;
-			if ( j != 0)
+			if (ans < 10 && j != 0)
 			{
 				_putchar(',');
 				_putchar(' ');
-
-			}
-			if (ans < n && j != 0)
-			{
 				_putchar(' ');
 				_putchar(' ');
-				_putchar((ans % 10) + '0');
+				_putchar(ans + '0');
 			}
-			else if (j != n && ans > 100)
+			else if (ans < 100 && ans >= 10)
 			{
-				_putchar((ans / 100) + '0');
-				_putchar((ans / 10) % 10 + '0');
-				_putchar((ans % 10) + '0');
-			}
-			else if (ans < 100 && ans >= n)
-			{
+				_putchar(',');
 				_putchar(' ');
 				_putchar((ans / 10) + '0');
 				_putchar((ans % 10) + '0');
 			}
-			else 
+			else if (ans == 0)
 			{
-				_putchar((ans % 10) + '0');
+				_putchar(ans + '0');
+			}
+			else if (ans >= 100)
+			{
+				_putchar(',');
+				_putchar(' ');
+				_putchar((ans / 100) + '0');
+				_putchar((ans / 10) % 10 + '0');
+				_putchar((ans % 10) + '0);
 			}
 		}
+		_putchar('\n');
 	}
 }
