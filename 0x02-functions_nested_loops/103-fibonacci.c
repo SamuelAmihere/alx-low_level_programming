@@ -13,7 +13,7 @@ int main(void)
 	long sum = 0;
 
 	sum += second;
-	for (i = 3; i <= 50; i++)
+	for (i = 1; i <= 33; i++)
 	{
 		next_num = first + second;
 		if (next_num < 4000000)
