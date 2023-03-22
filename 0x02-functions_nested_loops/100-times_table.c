@@ -36,7 +36,6 @@ void print_times_table(int n)
 				}
 				if (j != n)
 					_putchar(' ');
-				}
 				else
 					_putchar('\n');
 			}
