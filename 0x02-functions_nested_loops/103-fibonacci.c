@@ -20,9 +20,9 @@ int main(void)
 		{
 			if (first % 2 == 0)
 				sum += first;
-			first = second;
-			second = next_num;
 		}
+		first = second;
+		second = next_num;
 	}
 	printf("%ld", sum);
 	putchar('\n');
