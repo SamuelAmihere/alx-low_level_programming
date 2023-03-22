@@ -22,30 +22,30 @@ void print_times_table(int n)
 			if ( j != 0)
 			{
 				_putchar(',');
-				_puttchar(' ');
+				_putchar(' ');
 
 			}
 			if (ans < 10 && j != 0)
 			{
-				_puttchar(' ');
-				_puttchar(' ');
-				_puttchar((ans % 10) + '0');
+				_putchar(' ');
+				_putchar(' ');
+				_putchar((ans % 10) + '0');
 			}
 			else if (j != 0 && ans > 100)
 			{
-				_puttchar((ans / 100) + '0');
-				_puttchar((ans / 10) % 10 + '0');
-				_puttchar((ans % 10) + '0');
+				_putchar((ans / 100) + '0');
+				_putchar((ans / 10) % 10 + '0');
+				_putchar((ans % 10) + '0');
 			}
 			else if (ans < 100 && ans >= 10)
 			{
-				_puttchar(' ');
-				_puttchar((ans / 10) + '0');
-				_puttchar((ans % 10) + '0');
+				_putchar(' ');
+				_putchar((ans / 10) + '0');
+				_putchar((ans % 10) + '0');
 			}
 			else 
 			{
-				_puttchar((ans % 10) + '0');
+				_putchar((ans % 10) + '0');
 			}
 		}
 	}
