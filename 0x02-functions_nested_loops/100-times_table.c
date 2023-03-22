@@ -27,24 +27,25 @@ void print_times_table(int n)
 			{
 				_putchar(' ');
 				_putchar(ans + '0');
+		
+				else if (ans < 10)
+				{
+					_putchar(ans + '0');
+				}
+				else
+				{
+					_putchar((ans / 10) + '0');
+					_putchar((ans % 10) + '0');
+				}
+				if (j != n)
+				{
+					_putchar(',');
+					_putchar(' ');
+					_putchar(' ');
+				}
+				else
+					_putchar('\n');
 			}
-			else if (ans < 10)
-			{
-				_putchar(ans + '0');
-			}
-			else
-			{
-				_putchar((ans / 10) + '0');
-				_putchar((ans % 10) + '0');
-			}
-			if (j != n)
-			{
-				_putchar(',');
-				_putchar(' ');
-				_putchar(' ');
-			}
-			else
-				_putchar('\n');
 
 		}
 	}
