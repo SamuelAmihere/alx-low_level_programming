@@ -10,7 +10,7 @@ int main(void)
 	long first = 1;
 	long second = 2;
 	long next_num;
-	long sum;
+	long sum = 0;
 
 	sum += second;
 	for (i = 3; i <= 50; i++)
