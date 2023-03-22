@@ -18,20 +18,16 @@ void print_times_table(int n)
 	{
 		for (j = 0; j <= n; j++)
 		{
-			if (n > 15 || n < 0)
+			if (n < 15 && n > 0)
 			{
-				continue;
-			}
-			ans = i * j;
-			if (ans < 15 && j > 0)
-			{
-				_putchar(' ');
-				_putchar(ans + '0');
-		
-				else if (ans < 10)
+				ans = i * j;
+				if (ans < 10 && j > 0)
 				{
+					_putchar(' ');
 					_putchar(ans + '0');
 				}
+				else if (ans < 10)
+					_putchar(ans + '0');
 				else
 				{
 					_putchar((ans / 10) + '0');
@@ -46,7 +42,8 @@ void print_times_table(int n)
 				else
 					_putchar('\n');
 			}
-
+	
 		}
+
 	}
 }
