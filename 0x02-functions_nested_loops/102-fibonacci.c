@@ -6,10 +6,10 @@
  */
 int main(void)
 {
-	int i;
-	int first = 1;
-	int second = 2;
-	int next_num;
+	long i;
+	long first = 1;
+	long second = 2;
+	long next_num;
 
 	printf("%d, %d, ", first, second);
 	for (i = 3; i <= 50; i++)
