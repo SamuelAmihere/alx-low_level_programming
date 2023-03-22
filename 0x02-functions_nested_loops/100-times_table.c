@@ -31,7 +31,6 @@ void print_times_table(int n)
 			else if (ans < 10)
 			{
 				_putchar(ans + '0');
-				_putchar(' ');
 			}
 			else
 			{
@@ -41,6 +40,7 @@ void print_times_table(int n)
 			if (j != n)
 			{
 				_putchar(',');
+				_putchar(' ');
 				_putchar(' ');
 			}
 			else
