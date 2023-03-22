@@ -1,3 +1,4 @@
+#include <stdio.h>
 #include "main.h"
 
 /**
@@ -22,7 +23,7 @@ void print_times_table(int n)
 				continue;
 			}
 			ans = i * j;
-			if (ans < 10 && j > 0)
+			if (ans < 15 && j > 0)
 			{
 				_putchar(' ');
 				_putchar(ans + '0');
@@ -34,13 +35,14 @@ void print_times_table(int n)
 				_putchar((ans / 10) + '0');
 				_putchar((ans % 10) + '0');
 			}
-			if (j != 9)
+			if (j != n)
 			{
 				_putchar(',');
 				_putchar(' ');
 			}
 			else
 				_putchar('\n');
+
 		}
 	}
 }
