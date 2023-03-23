@@ -23,5 +23,6 @@ int main(void)
 		if (i != 100)
 			_putchar(' ');
 	}
+	_putchar('\n');
 	return (0);
 }
