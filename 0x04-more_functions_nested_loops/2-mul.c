@@ -2,7 +2,7 @@
 #include "main.h"
 
 /**
- * mil - multiplies two digits
+ * mul - multiplies two digits
  *
  * @a: a digit
  *
