@@ -9,10 +9,9 @@
  */
 void print_number(int n)
 {
-	int i, j, divisor, counter;
+	int i, j, divisor;
 
 	divisor = 1;
-	counter = 0;
 
 	if (n < 0)
 	{
@@ -29,7 +28,7 @@ void print_number(int n)
 	while (j >= 1)
 	{
 		divisor = divisor / 10;
-		putchar((n / j) % 10 + '0');
+		_putchar((n / j) % 10 + '0');
 		j = j / 10;
 	}
 }
