@@ -17,3 +17,25 @@ void print_rev(char *s)
 
 	_putchar('\n');
 }
+
+/**
+ * _strlen - determines the length of a string.
+ *
+ * @s: char pointer
+ *
+ * Return: interger
+ *
+ */
+int _strlen(char *s)
+{
+	int len = 0;
+
+	while (*s != '\0')
+	{
+		len++;
+		s++;
+	}
+
+	return (len);
+
+}
