@@ -3,7 +3,7 @@
 /**
  * print_rev - prints a string, in reverse, followed by a new line.
  *
- * @s: string array pointer
+ * @s: pointerb to string array
  *
  * Return void
  */
@@ -16,4 +16,24 @@ void print_rev(char *s)
 		_putchar('\n');
 
 	_putchar('\n');
+}
+
+/**
+ * _strlen - determine length of string
+ *
+ * @s: pointerb to string array
+ *
+ * Return: length of array
+ */
+
+int _strlen(char *s)
+{
+	int len = 0;
+
+	while (*s != '\0')
+	{
+		len++;
+		s++;
+	}
+	return (len);
 }
