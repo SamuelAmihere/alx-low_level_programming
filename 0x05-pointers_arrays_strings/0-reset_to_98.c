@@ -1,11 +1,12 @@
 #include "main.h"
 
 /**
-*reset_to_98 - updates a value through pointer
-*
-*@n: a pointer of int
-*
-*Return: void
+ * reset_to_98 - updates value of an address
+ *
+ * @n: pointer
+ *
+ * Return - void
+ */
 
 void reset_to_98(int *n)
 {
