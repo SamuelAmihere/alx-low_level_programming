@@ -10,10 +10,14 @@
 
 void rev_string(char *s)
 {
-	int i, j, len;
+	int i, j, k, len;
 	char tmp, *ptr;
 
         len = _strlen(s);
+
+	while (s[k] != '\0')
+		k++;
+
 	ptr = s;
 
 	for (i = 0; i < len - 1; i++)
@@ -27,21 +31,3 @@ void rev_string(char *s)
 	}
 
 }
-
-/**
- * _strlen - determines the length of a string.
- *
- * @s: char pointer
- *
- * Return: interger
- */
-int _strlen(char *s)
-{
-	int len = 0;
-
-	while (s[len] != '\0')
-		len++;
-
-	return (len);
-}
-
