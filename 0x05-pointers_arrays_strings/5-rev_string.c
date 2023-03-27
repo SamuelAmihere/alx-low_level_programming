@@ -13,8 +13,6 @@ void rev_string(char *s)
 	int i, j, k, len;
 	char tmp, *ptr;
 
-        len = _strlen(s);
-
 	while (s[k] != '\0')
 		k++;
 
