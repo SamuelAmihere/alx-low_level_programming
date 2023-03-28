@@ -17,8 +17,6 @@ int _atoi(char *s)
 	{
 		if (*s == '-')
 			sign = -1;
-		if (*s >= '0' && *s <= '9')
-			break;
 		s++;
 	}
 
