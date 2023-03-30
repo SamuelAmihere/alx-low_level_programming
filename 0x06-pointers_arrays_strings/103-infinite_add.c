@@ -17,43 +17,39 @@
 char *infinite_add(char *n1, char *n2,
 	       char *r, int size_r)
 {
-	int digit1, digit2, carry;
-	int sum, i, j, k, lenr;
+	int carry = 0, i = 0, j = 0, k = 0;
+	int a, b, sum, x;
 	char tmp;
-	int len1 = 0, len2 = 0;
 
-	while (n1[len1] != '\0')
-		len1++;
-	while (n2[len2] != '\0')
-		len2++;
-	if (len1 >= size_r || len2 >= size_r)
+	/* Calculate the length of both input strings */
+	while (n1[i] != '\0')
+		i++;
+	while (n2[j] != '\0')
+		j++;
+	/* Check if the result will fit in the output buffer */
+	if (i > size_r || j > size_r)
 		return (0);
-	carry = 0, sum = 0, i = len1 - 1;
-	j = len2 - 1, k = 0;
-	while (i >= 0 || j >= 0 || carry)
+	/* Iterate from the end of the strings and add digits */
+	while (i > 0 || j > 0 || carry > 0)
 	{
-		digit1 = i >= 0 ? n1[i] - '0' : 0;
-		digit2 = j >= 0 ? n2[j] - '0' : 0;
-		sum = digit1 + digit2 + carry;
-		if (sum >= 10)
+		a = i > 0 ? n1[--i] - '0' : 0;
+		b = j > 0 ? n2[--j] - '0' : 0;
+		sum = a + b + carry;
+		if (k < size_r - 1)
 		{
-			carry = 1;
-			sum -= 10;
+			r[k++] = (sum % 10) + '0';
+			carry = sum / 10;
 		} else
-			carry = 0;
-		if (k >= size_r)
+			/* The result doesn't fit in the output buffer */
 			return (0);
-		r[k++] = sum + '0';
-		i--, j--;
 	}
+	/* Add null terminator and reverse the result */
 	r[k] = '\0';
-
-	lenr = k;
-	for (i = 0; i < lenr / 2; i++)
+	for (x = 0; x < k / 2; x++)
 	{
-		tmp = r[i];
-		r[i] = r[lenr - i - 1];
-		r[lenr - i - 1] = tmp;
+		tmp = r[x];
+		r[x] = r[k - x - 1];
+		r[k - x - 1] = tmp;
 	}
 
 	return (r);
