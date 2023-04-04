@@ -12,8 +12,10 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int i, left_d = 0, right_d = 0;
+	int i, left_d, right_d;
 
+	left_d = 0;
+	right_d = 0;
 	for (i = 0; i < size; i++)
 	{
 		left_d += a[i * size + i];
