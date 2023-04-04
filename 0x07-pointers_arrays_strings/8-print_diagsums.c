@@ -12,19 +12,15 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int i, j;
-	unsigned int l = 0, r = 0;
+	int i, left_d = 0, right_d = 0;
 
-	for (i = 0; i < size; i++)
+	for (i = 0; i < size * size; i += size + 1)
 	{
-		for (j = 0; j < size; j++)
-		{
-			if (i == j)
-				l += a[i][j];
-			else if ((i + j) == size)
-				r = a[i][j];
-		}
-
+		left_d += a[i];
 	}
-	printf("%d, %d\n", l, r);
+	for (i = size - 1; i < size * size - 1; i += size - 1)
+	{
+		right_d += a[i];
+	}
+	printf("%d, %d\n", left_d, right_d);
 }
