@@ -22,5 +22,5 @@ void print_diagsums(int *a, int size)
 	{
 		right_d += a[i];
 	}
-	printf("%d, %d\n", left_d, right_d);
+	printf("%d, %d", left_d, right_d);
 }
