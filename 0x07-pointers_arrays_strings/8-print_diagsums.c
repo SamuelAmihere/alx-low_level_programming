@@ -12,15 +12,12 @@
  */
 void print_diagsums(int *a, int size)
 {
-	int i, j, left_d = 0, right_d = 0;
+	int i, left_d = 0, right_d = 0;
 
-	for (i = 0; i < (size * size); i += size + 1)
+	for (i = 0; i < size; i++)
 	{
-		left_d += a[i];
-	}
-	for (j = (size - 1); j < (size * size - 1); j += size - 1)
-	{
-		right_d += a[j];
+		left_d += *(a + i * size + i);
+		right_d += *(a + i * size + (size - 1 - i));
 	}
 	printf("%d, %d\n", left_d, right_d);
 }
