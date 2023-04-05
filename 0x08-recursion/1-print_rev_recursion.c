@@ -15,12 +15,10 @@ void _print_rev_recursion(char *s)
 		_print_rev_recursion(s);
 
 	}
-	else if (*s == '\0')
+	else
 	{
 		print(s);
 	}
-	else
-		_putchar('\n');
 }
 
 /**
@@ -35,4 +33,5 @@ void print(char *s)
 		_putchar(*s);
 		print(s - 1);
 	}
+	_putchar(*s);
 }
