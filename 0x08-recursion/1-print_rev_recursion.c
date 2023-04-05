@@ -11,14 +11,14 @@ void _print_rev_recursion(char *s)
 {
 	if (*s != '\0')
 	{
-		s = s + 1;
+		s += 1;
 		_print_rev_recursion(s);
 
 	}
 	else
 	{
+		s -= 1;
 		print(s);
-		_putchar(*s);
 	}
 }
 
@@ -29,10 +29,12 @@ void _print_rev_recursion(char *s)
  */
 void print(char *s)
 {
-	if (*s != '\n' || *s != '\0')
+	if (*s != '\n')
 	{
 		_putchar(*s);
 		s = s - 1;
 		print(s);
 	}
+	else
+		_putchar('\n');
 }
