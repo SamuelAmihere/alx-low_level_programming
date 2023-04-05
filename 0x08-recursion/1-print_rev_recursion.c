@@ -38,6 +38,9 @@ void print(char *s)
 			s = s - 1;
 			print(s);
 		}
+		else
+			_putchar('\n');
 	}
-	_putchar('\n');
+	else
+		_putchar('\n');
 }
