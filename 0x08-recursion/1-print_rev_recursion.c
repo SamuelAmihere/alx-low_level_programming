@@ -16,7 +16,10 @@ void _print_rev_recursion(char *s)
 
 	}
 	else
+	{
 		print(s);
+		_putchar('\n');
+	}
 }
 
 /**
@@ -31,6 +34,4 @@ void print(char *s)
 		_putchar(*s);
 		print(s - 1);
 	}
-	else
-		_putchar('\n');
 }
