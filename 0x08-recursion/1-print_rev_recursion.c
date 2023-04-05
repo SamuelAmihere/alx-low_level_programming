@@ -9,32 +9,28 @@ int get_len(char *s);
  */
 void _print_rev_recursion(char *s)
 {
-	int len = get_len(s);
-
 	if (*s != '\0')
 	{
-		_putchar(s + len);
-		len--;
+		s = s + 1;
+		_print_rev_recursion(s);
 
 	}
 	else
-		_putchar('\n');
+		print(s);
 }
 
 /**
- * get_len - get the length of a string
- * @s: a string to find length
- * Return: length of a string
+ * print - reverse a string
+ * @s: a string to reverse
+ * Return: nothing
  */
-int get_len(char *s)
+void print(char *s)
 {
-	int i = 0;
-
-	if (*s != '\0')
+	if (*s != '\n')
 	{
-		i++;
-		get_len(s + 1);
+		_putchar(*s);
+		print(s - 1);
 	}
 	else
-		return (i);
+		_putchar('\n');
 }
