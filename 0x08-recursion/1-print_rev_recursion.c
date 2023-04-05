@@ -41,6 +41,4 @@ void print(char *s)
 		else
 			_putchar('\n');
 	}
-	else
-		_putchar('\n');
 }
