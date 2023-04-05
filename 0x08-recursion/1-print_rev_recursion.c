@@ -33,6 +33,4 @@ void print(char *s)
 		_putchar(*s);
 		print(s - 1);
 	}
-	else
-		_putchar(*s);
 }
