@@ -30,8 +30,11 @@ void print(char *s)
 {
 	if (*s != '\n')
 	{
-		_putchar(*s);
-		print(s - 1);
+		if (*s != '\0')
+		{
+			_putchar(*s);
+			print(s - 1);
+		}
 	}
 	else
 		_putchar(*s);
