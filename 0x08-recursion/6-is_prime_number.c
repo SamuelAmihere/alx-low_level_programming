@@ -17,7 +17,10 @@ int is_prime_number(int n)
 			return (1);
 		else
 			return (0);
-	}
 
-	return (is_prime_number((int) (n / 2) + 1));
+		is_prime_number((int) (n / 2) + 1);
+	}
+	else
+		return (0);
+
 }
