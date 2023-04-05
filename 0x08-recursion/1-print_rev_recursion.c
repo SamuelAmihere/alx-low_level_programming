@@ -1,5 +1,5 @@
 #include "main.h"
-int get_len(char *s);
+void print(char *s);
 /**
  * _print_rev_recursion - prints a string in reverse.
  *
