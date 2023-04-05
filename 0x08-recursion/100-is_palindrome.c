@@ -37,7 +37,7 @@ int len(char *s)
 {
 	if (*s != '\0')
 	{
-		return ((s - (s - 1)) + _strlen_recursion(s + 1));
+		return ((s - (s - 1)) + len(s + 1));
 	}
 	else
 		return (0);
