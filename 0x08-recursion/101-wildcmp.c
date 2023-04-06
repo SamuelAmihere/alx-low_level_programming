@@ -1,5 +1,5 @@
 #include "main.h"
-int helper_func(*s1, *s2);
+int helper_func(char *s1, char *s2);
 
 /**
  * wildcmp - compares two strings and returns
@@ -20,7 +20,7 @@ int wildcmp(char *s1, char *s2)
  * @s2: second string
  * Return: 0 or 1
  */
-int helper_func(*s1, *s2)
+int helper_func(char *s1, char *s2)
 {
 	if (*s1 == '\0' && *s2 == '\0')
 		return (1);
