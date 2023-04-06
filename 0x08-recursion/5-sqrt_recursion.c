@@ -10,10 +10,12 @@ int get_sqrt(int n, int a, int b);
 
 int _sqrt_recursion(int n)
 {
+	int up = n / 2 + 1;
+
 	if (n < 0)
 		return (-1);
 	else
-		return (get_sqrt(n, 0, n));
+		return (get_sqrt(n, 0, up));
 }
 
 /**
