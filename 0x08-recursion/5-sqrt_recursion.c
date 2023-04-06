@@ -10,7 +10,7 @@ int get_sqrt(int n, int a, int b);
 
 int _sqrt_recursion(int n)
 {
-	int up = n / 2 + 1;
+	int up = (n + 1) / 2;
 
 	if (n < 0)
 		return (-1);
