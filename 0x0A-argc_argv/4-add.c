@@ -1,5 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+
 /**
  * main - Entry point
  *
@@ -12,9 +14,8 @@
 
 int main(int argc, char *argv[])
 {
-	int i;
-	int result;
-	int num;
+	int i, j, result, num;
+	char *ptr;
 
 	if (argc == 1)
 	{
@@ -22,23 +23,27 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 
-	i = 1;
-	result = 0;
-	while (i < argc)
+	for (i = 1; i < argc; i++)
 	{
-		num = atoi(argv[i]);
-		if (num > 0 || *argv[i] == '0')
-			result += num;
-		else
+		ptr = argv[i];
+		j = 0;
+		while (arg[j] != '\0')
 		{
-			printf("Error\n");
-			return (1);
-		}
+			if (!isdigit(ptr[j]))
+			{
+				printf("Error\n");
 
-		i++;
+				return (1);
+			}
+			j++;
+		}
+		num = atoi(ptr);
+		result += num;
 	}
 
 	printf("%d\n", result);
 
 	return (0);
 }
+
+
