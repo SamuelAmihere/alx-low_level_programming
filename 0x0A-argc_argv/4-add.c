@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 	{
 		ptr = argv[i];
 		j = 0;
-		while (arg[j] != '\0')
+		while (ptr[j] != '\0')
 		{
 			if (!isdigit(ptr[j]))
 			{
