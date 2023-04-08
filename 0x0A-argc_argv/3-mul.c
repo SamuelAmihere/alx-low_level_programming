@@ -20,13 +20,8 @@ int main(int argc, char **argv)
 		return (1);
 	}
 
-	i = 1;
-	result = 1;
-	while (i < argc)
-	{
-		result = result * (int) *argv[i];
-		i++;
-	}
+	result = (int) *argv[1] * (int) *argv[2];
+
 	printf("%d\n", result);
 
 	return (0);
