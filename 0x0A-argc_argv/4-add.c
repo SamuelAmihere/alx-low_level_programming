@@ -13,7 +13,7 @@
 int main(int argc, char *argv[])
 {
 	int i;
-	unsigned int result;
+	int result;
 
 	if (argc == 1)
 	{
@@ -25,7 +25,7 @@ int main(int argc, char *argv[])
 	result = 0;
 	while (i < argc)
 	{
-		if (atoi(argv[i]) || *argv[i] == 48)
+		if (atoi(argv[i]) || argv[i] == 48)
 			result += atoi(argv[i]);
 		else
 		{
@@ -34,7 +34,7 @@ int main(int argc, char *argv[])
 		}
 		i++;
 	}
-	printf("%u\n", result);
+	printf("%d\n", result);
 
 	return (0);
 }
