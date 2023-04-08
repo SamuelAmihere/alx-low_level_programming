@@ -11,14 +11,14 @@
  * Return: 0 always on success
  */
 
-int main(int argc, char **argv[])
+int main(int argc, char *argv[])
 {
 	int i;
 	unsigned int result;
 
 	if (argc == 1)
 	{
-		printf("0\n");
+		printf("0");
 		return (0);
 	}
 
@@ -30,12 +30,12 @@ int main(int argc, char **argv[])
 			result += atoi(argv[i]);
 		else
 		{
-			printf("Error\n");
+			printf("Error");
 			return (1);
 		}
 		i++;
 	}
-	printf("%u\n", result);
+	printf("%u", result);
 
 	return (0);
 }
