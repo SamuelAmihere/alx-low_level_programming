@@ -25,7 +25,7 @@ int main(int argc, char **argv)
 	result = 1;
 	while (i < argc)
 	{
-		result *= (int) argv[i];
+		result *= (int) *argv[i];
 		i++;
 	}
 	printf("%u\n", result);
