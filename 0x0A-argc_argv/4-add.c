@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
 
 	i = 1;
 	result = 0;
-	while (i < arg)
+	while (i < argc)
 	{
 		if (!isdigit(*argv[1]))
 		{
