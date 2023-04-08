@@ -1,5 +1,4 @@
 #include <stdio.h>
-#include <stdlib.h>
 
 /**
  * main - Entry point
@@ -26,7 +25,7 @@ int main(int argc, char *argv[])
 	result = 1;
 	while (i < argc)
 	{
-		result *= atoi(argv[i]);
+		result *= (int) argv[i];
 		i++;
 	}
 	printf("%u\n", result);
