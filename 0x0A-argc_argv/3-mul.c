@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 
 /**
  * main - Entry point
@@ -10,7 +11,7 @@
  * Return: 0 always on success
  */
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	int i, result;
 
@@ -20,7 +21,7 @@ int main(int argc, char *argv[])
 		return (1);
 	}
 
-	result = (int) argv[1] * (int) argv[2];
+	result = atoi(argv[1]) * atoi(argv[2]);
 
 	printf("%d\n", result);
 
