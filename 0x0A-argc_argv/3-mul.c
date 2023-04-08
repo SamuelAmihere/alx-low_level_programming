@@ -12,10 +12,9 @@
 
 int main(int argc, char **argv)
 {
-	int i;
-	int result;
+	int i, result;
 
-	if ((argc - 1) != 2)
+	if (argc <  2)
 	{
 		printf("Error\n");
 		return (1);
@@ -28,7 +27,7 @@ int main(int argc, char **argv)
 		result *= (int) *argv[i];
 		i++;
 	}
-	printf("%u\n", result);
+	printf("%d\n", result);
 
 	return (0);
 }
