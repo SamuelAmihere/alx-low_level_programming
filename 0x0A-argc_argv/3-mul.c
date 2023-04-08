@@ -14,7 +14,7 @@ int main(int argc, char **argv)
 {
 	int i, result;
 
-	if (argc <  2)
+	if (argc <= 1)
 	{
 		printf("Error\n");
 		return (1);
@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 	result = 1;
 	while (i < argc)
 	{
-		result *= (int) *argv[i];
+		result = result * (int) *argv[i];
 		i++;
 	}
 	printf("%d\n", result);
