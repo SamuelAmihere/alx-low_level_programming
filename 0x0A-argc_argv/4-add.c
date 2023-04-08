@@ -14,8 +14,7 @@
 
 int main(int argc, char *argv[])
 {
-	int i, j, result, num;
-	char *ptr;
+	int i, result;
 
 	if (argc == 1)
 	{
@@ -23,22 +22,18 @@ int main(int argc, char *argv[])
 		return (0);
 	}
 
-	for (i = 1; i < argc; i++)
+	i = 1;
+	result = 0;
+	while (i < arg)
 	{
-		ptr = argv[i];
-		j = 0;
-		while (ptr[j] != '\0')
+		if (!isdigit(*argv[1]))
 		{
-			if (!isdigit(ptr[j]))
-			{
-				printf("Error\n");
-
-				return (1);
-			}
-			j++;
+			printf("Error\n");
+			return (1);
 		}
-		num = atoi(ptr);
-		result += num;
+		else
+			result += atoi(argv[i]);
+		i++;
 	}
 
 	printf("%d\n", result);
