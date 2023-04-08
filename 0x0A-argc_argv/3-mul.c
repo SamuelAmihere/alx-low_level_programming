@@ -11,7 +11,7 @@
  * Return: 0 always on success
  */
 
-int main(int argc, char **argv[])
+int main(int argc, char *argv[])
 {
 	int i;
 	int result;
