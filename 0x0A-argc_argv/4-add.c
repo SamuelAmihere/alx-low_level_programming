@@ -27,15 +27,17 @@ int main(int argc, char *argv[])
 	while (i < argc)
 	{
 		num = atoi(argv[i]);
-		if (num > 0 || *argv[i] == 48)
+		if (num >= 0 || *argv[i] == '0')
 			result += num;
 		else
 		{
 			printf("Error\n");
 			return (1);
 		}
+
 		i++;
 	}
+
 	printf("%d\n", result);
 
 	return (0);
