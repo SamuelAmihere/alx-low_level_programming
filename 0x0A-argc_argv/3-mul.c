@@ -11,10 +11,10 @@
  * Return: 0 always on success
  */
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv[])
 {
 	int i;
-	unsigned int result;
+	int result;
 
 	if ((argc - 1) != 2)
 	{
