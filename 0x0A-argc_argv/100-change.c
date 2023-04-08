@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
 
 	if (argc == 1)
 	{
-		printf("0");
+		printf("0\n");
 		return (0);
 	}
 
@@ -30,12 +30,12 @@ int main(int argc, char *argv[])
 			result += atoi(argv[i]);
 		else
 		{
-			printf("Error");
+			printf("Error\n");
 			return (1);
 		}
 		i++;
 	}
-	printf("%u", result);
+	printf("%u\n", result);
 
 	return (0);
 }
