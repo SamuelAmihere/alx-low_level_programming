@@ -24,7 +24,7 @@ int main(int argc, char **argv)
 		return (1);
 	}
 	num = neg_or_nondigit(argv[1]);
-	for (; i < 5; i++)
+	for (i = 0; i < 5; i++)
 	{
 		if (num < 0)
 		{
