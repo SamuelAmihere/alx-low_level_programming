@@ -12,7 +12,7 @@
  */
 int main(int argc, char **argv)
 {
-	int i, j, result, num;
+	int i, result, num;
 	int denominations[] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
