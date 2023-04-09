@@ -63,7 +63,7 @@ int neg_or_nondigit(char *ptr)
 {
 	int i, j = 0;
 
-	i = atoi((ptr - j));
+	i = atoi((ptr));
 	while (*ptr != '\0')
 	{
 		if (*ptr == '-')
