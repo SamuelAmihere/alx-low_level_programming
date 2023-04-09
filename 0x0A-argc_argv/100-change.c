@@ -12,7 +12,7 @@
  * Return: 0 always on success
  */
 
-int main(int argc, char *argv[])
+int main(int argc, char **argv)
 {
 	int i = 0, j, result, num;
 	int denominations[] = {25, 10, 5, 2, 1};
@@ -66,7 +66,7 @@ int neg_or_nondigit(char *ptr)
 	int i, j = 0;
 
 	i = atoi((ptr - j));
-	while (*pt != '\0')
+	while (*ptr != '\0')
 	{
 		if (*ptr == '-')
 		{
