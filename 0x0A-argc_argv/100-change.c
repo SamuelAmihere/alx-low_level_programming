@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
 
 /**
  * main - Entry point
@@ -13,29 +14,69 @@
 
 int main(int argc, char *argv[])
 {
-	int i;
-	unsigned int result;
+	int i = 0, j, result, num;
+	int denominations[] = {25, 10, 5, 2, 1};
 
-	if (argc == 1)
+	int neg_or_nondigit(char *ptr);
+	if (argc != 2)
 	{
-		printf("0\n");
+		printf("Error\n");
+		return (1);
+	}
+
+	num = neg_or_nondigit(argv[1]);
+	if (num == -1)
 		return (0);
-	}
+	else if (num == -2)
+		return (1);
 
-	i = 1;
-	result = 0;
-	while (i < argc)
+	for (; i < 5; i++)
 	{
-		if (atoi(argv[i]) || *argv[i] == 48)
-			result += atoi(argv[i]);
-		else
+		if (num == 0)
 		{
-			printf("Error\n");
-			return (1);
+			printf("%d\n", result);
+			return (0);
 		}
-		i++;
+		if (denominations[i] <= num)
+		{
+			result += num / denominations[i];
+			num = abs(num - (denominations[i] * (num /
+			denominations[i])));
+		}
+		for (j = 0; j < 5; j++)
+		{
+			if (num == denominations[j])
+			{
+				result += 1;
+				num = 0;
+			}
+		}
 	}
-	printf("%u\n", result);
-
+	printf("%d\n", result);
 	return (0);
+}
+
+/**
+ * neg_or_nondigit - checks for negative and nondigits
+ * @ptr: pointer to string to test
+ * Return: 0 for negative test, 1 for digit test
+ */
+int neg_or_nondigit(char *ptr)
+{
+	int i, j = 0;
+
+	i = atoi((ptr - j));
+	while (*pt != '\0')
+	{
+		if (*ptr == '-')
+		{
+			printf("0\n");
+			i = -1;
+		}
+		if (!isdigit(*ptr))
+			i = -2;
+		j++;
+		ptr++;
+	}
+	return (i);
 }
