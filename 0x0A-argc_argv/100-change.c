@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <ctype.h>
 #include "main.h"
+
 /**
  * main - Entry point
  *
@@ -11,11 +12,11 @@
  *
  * Return: 0 always on success
  */
-
 int main(int argc, char **argv)
 {
 	int i = 0, j, result, num;
 	int denominations[] = {25, 10, 5, 2, 1};
+
 	{
 		printf("Error\n");
 		return (1);
