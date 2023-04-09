@@ -23,15 +23,14 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		return (1);
 	}
-
 	num = neg_or_nondigit(argv[1]);
-	if (num == -2)
-		return (1);
-
 	for (; i < 5; i++)
 	{
 		if (num == -1)
+		{
+			printf("0\n");
 			return (0);
+		}
 		if (num == 0)
 		{
 			printf("%d\n", result);
@@ -65,19 +64,13 @@ int neg_or_nondigit(char *ptr)
 {
 	int i = 0, j = 0;
 
-	i = atoi((ptr));
 	while (*ptr != '\0')
 	{
-		if (*ptr == '-')
-		{
-			printf("0\n");
-			i = -1;
-		}
 		if (!isdigit(*ptr))
-			i = -2;
+			return (-1);
 		j++;
 		ptr++;
 	}
-	i = atoi((ptr));
+	i = atoi((ptr - j));
 	return (i);
 }
