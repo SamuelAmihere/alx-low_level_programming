@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <ctype.h>
-
+#include "main.h"
 /**
  * main - Entry point
  *
@@ -16,9 +16,6 @@ int main(int argc, char **argv)
 {
 	int i = 0, j, result, num;
 	int denominations[] = {25, 10, 5, 2, 1};
-
-	int neg_or_nondigit(char *ptr);
-	if (argc != 2)
 	{
 		printf("Error\n");
 		return (1);
