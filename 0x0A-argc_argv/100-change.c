@@ -2,8 +2,6 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-int neg_or_nondigit(char *ptr);
-
 /**
  * main - Entry point
  *
@@ -23,7 +21,7 @@ int main(int argc, char **argv)
 		printf("Error\n");
 		return (1);
 	}
-	num = neg_or_nondigit(argv[1]);
+	num = atoi(argv[1]);
 	for (i = 0; i < 5; i++)
 	{
 		if (num < 0)
@@ -52,24 +50,4 @@ int main(int argc, char **argv)
 	}
 	printf("%d\n", result);
 	return (0);
-}
-
-/**
- * neg_or_nondigit - checks for negative and nondigits
- * @ptr: pointer to string to test
- * Return: 0 for negative test, 1 for digit test
- */
-int neg_or_nondigit(char *ptr)
-{
-	int i = 0, j = 0;
-
-	while (*ptr != '\0')
-	{
-		if (!isdigit(*ptr))
-			return (-1);
-		j++;
-		ptr++;
-	}
-	i = atoi((ptr - j));
-	return (i);
 }
