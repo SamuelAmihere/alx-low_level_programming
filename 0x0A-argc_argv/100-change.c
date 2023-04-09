@@ -15,7 +15,7 @@ int neg_or_nondigit(char *ptr);
  */
 int main(int argc, char **argv)
 {
-	int i = 0, j, result, num;
+	int i, j, result, num;
 	int denominations[] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
@@ -26,7 +26,7 @@ int main(int argc, char **argv)
 	num = neg_or_nondigit(argv[1]);
 	for (; i < 5; i++)
 	{
-		if (num == -1)
+		if (num < 0)
 		{
 			printf("0\n");
 			return (0);
@@ -39,8 +39,7 @@ int main(int argc, char **argv)
 		if (denominations[i] <= num)
 		{
 			result += num / denominations[i];
-			num = abs(num - (denominations[i] * (num /
-			denominations[i])));
+			num = abs(num - (denominations[i] * result));
 		}
 		for (j = 0; j < 5; j++)
 		{
