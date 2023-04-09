@@ -25,13 +25,13 @@ int main(int argc, char **argv)
 	}
 
 	num = neg_or_nondigit(argv[1]);
-	if (num == -1)
-		return (0);
-	else if (num == -2)
+	if (num == -2)
 		return (1);
 
 	for (; i < 5; i++)
 	{
+		if (num == -1)
+			return (0);
 		if (num == 0)
 		{
 			printf("%d\n", result);
