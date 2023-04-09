@@ -63,7 +63,7 @@ int main(int argc, char **argv)
  */
 int neg_or_nondigit(char *ptr)
 {
-	int i, j = 0;
+	int i = 0, j = 0;
 
 	i = atoi((ptr));
 	while (*ptr != '\0')
@@ -78,5 +78,6 @@ int neg_or_nondigit(char *ptr)
 		j++;
 		ptr++;
 	}
+	i = atoi((ptr));
 	return (i);
 }
