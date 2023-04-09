@@ -29,6 +29,10 @@ int main(int argc, char **argv)
 			num %= denominations[i];
 
 		}
+	} else
+	{
+		printf("0\n");
+		return (0);
 	}
 	printf("%d\n", result);
 	return (0);
