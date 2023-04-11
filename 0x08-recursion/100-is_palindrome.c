@@ -1,4 +1,4 @@
-#include "main.h"i
+#include "main.h"
 int len(char *s);
 /**
  * is_palindrome - returns 1 if a string
