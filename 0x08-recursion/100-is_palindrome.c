@@ -28,11 +28,13 @@ int is_palindrome(char *s)
 
 int pal_helper(int i, char *s)
 {
-	if (*s != *(s + i))
-		return (0);
-	else if (*s == 0)
-		return (1);
-	return (pal_helper(i - 1, s + 1));
+	if (*s != '\0')
+	{
+		if (*s != *(s + i))
+			return (0);
+		return (pal_helper(i - 1, s + 1));
+	}
+	return (1);
 }
 
 /**
