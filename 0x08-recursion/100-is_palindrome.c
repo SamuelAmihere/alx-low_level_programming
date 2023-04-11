@@ -1,6 +1,6 @@
 #include "main.h"
 int len(char *s);
-int pal_helper(int i, char *s);
+int pal_helper(int l, int i, char *s);
 
 /**
  * is_palindrome - returns 1 if a string
@@ -13,28 +13,27 @@ int pal_helper(int i, char *s);
 
 int is_palindrome(char *s)
 {
-	int i = len(s);
+	int l = len(s);
 
-	return (pal_helper(i, s));
+	return (pal_helper(l, 0, s));
 }
 
 /**
  * pal_helper - compare string to its reverse
  *
- * @i: length of s
+ * @l: length of s
+ * @i: iterator
  * @s: string
  * Return: 1 on Success
  */
 
-int pal_helper(int i, char *s)
+int pal_helper(int l, int i, char *s)
 {
-	if (*s != '\0')
-	{
-		if (*s != *(s + i))
-			return (0);
-		return (pal_helper(i - 1, s + 1));
-	}
-	return (1);
+	if (*(s + i) != *(s + l - 1))
+		return (0);
+	if (i >= l)
+		return (1);
+	return (pal_helper(l - 1, i + 1, s));
 }
 
 /**
