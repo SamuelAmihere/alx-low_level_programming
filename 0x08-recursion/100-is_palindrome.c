@@ -39,5 +39,5 @@ int len(char *s)
 		return (1 + len(s + 1));
 	}
 	else
-		return (0);
+		return (1);
 }
