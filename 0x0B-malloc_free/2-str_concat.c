@@ -6,7 +6,7 @@
  * @s1: first string
  * @s2: second string
  *
- * Return point to a newly allocated memory
+ * Return: pointer to a newly allocated memory
  * for concatenated s1 and s2, NULL on
  * failure
  */
