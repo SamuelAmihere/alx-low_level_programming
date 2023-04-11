@@ -10,35 +10,31 @@ int get_sqrt(int n, int a, int b);
 
 int _sqrt_recursion(int n)
 {
-	int up = (n + 1) / 2;
-
 	if (n < 0)
 		return (-1);
 	if (n == 0)
 		return (0);
 	if (n == 1)
 		return (1);
-	return (get_sqrt(n, 0, up));
+	return (get_sqrt(n, 2));
 }
 
 /**
  * get_sqrt - find the square root
+ *
  * @n: the number to find the square root
- * @a: lower bound of a search
- * @b: upper bound of a search
+ * @a: looper
+ *
  * Return: the sqaure root
  */
-int get_sqrt(int n, int a, int b)
+int get_sqrt(int n, int a)
 {
-	int m = (a + b) / 2;
-	int sq = m * m;
-
-	if (a > b)
-		return (-1);
-	if (sq < n)
-		return (get_sqrt(n, m + 1, b));
-	else if (sq == n)
-		return (m);
-	else
-		return (get_sqrt(n, a, m - 1));
+	if (a % (n / a) == 0)
+	{
+		if (a * (n / a) == n)
+			return (a);
+		else
+			return (-1);
+	}
+	return (0 + get_sqrt(n, a + 1));
 }
