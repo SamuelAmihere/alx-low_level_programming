@@ -15,21 +15,21 @@ char *str_concat(char *s1, char *s2)
 {
 	int j, count = 0, count2 = 0;
 	char *ptr;
-	char empt[] = {'\0'};
 
-	if (s1 == NULL)
-		*s1 = *empt;
-	if (s2 == NULL)
-		*s2 = *empt;
-
-	while (*(s1 + count) != '\0')
-		count++;
-
-	while (count2 >= 0)
+	if (s1 != NULL)
 	{
-		if (*(s2 + count2) == '\0')
-			break;
-		count2++;
+		while (*(s1 + count) != '\0')
+			count++;
+	}
+
+	if (s2 != NULL)
+	{
+		while (count2 >= 0)
+		{
+			if (*(s2 + count2) == '\0')
+				break;
+			count2++;
+		}
 	}
 
 	ptr = malloc(sizeof(s1[0]) * (count + count2) + 1);
