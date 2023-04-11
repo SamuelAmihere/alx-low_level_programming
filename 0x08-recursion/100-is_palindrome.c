@@ -1,6 +1,6 @@
 #include "main.h"
 int len(char *s);
-int pal_helper(int i, char *s)
+int pal_helper(int i, char *s);
 
 /**
  * is_palindrome - returns 1 if a string
