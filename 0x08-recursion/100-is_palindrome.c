@@ -1,4 +1,4 @@
-#include "main.h"
+#include "main.h"i
 int len(char *s);
 /**
  * is_palindrome - returns 1 if a string
@@ -23,10 +23,7 @@ int is_palindrome(char *s)
 			return (1 + is_palindrome(s + 1));
 	}
 	else
-	{
 		return (0);
-	}
-
 }
 
 /**
@@ -39,7 +36,7 @@ int len(char *s)
 {
 	if (*s != '\0')
 	{
-		return ((s - (s - 1)) + len(s + 1));
+		return (1 + len(s + 1));
 	}
 	else
 		return (0);
