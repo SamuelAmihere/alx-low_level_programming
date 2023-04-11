@@ -32,7 +32,7 @@ int pal_helper(int i, char *s)
 	{
 		if (*s != *(s + i))
 			return (0);
-		return (pal_helper(i - 1, s + 1));
+		return (pal_helper(i - 2, s + 1));
 	}
 	return (1);
 }
