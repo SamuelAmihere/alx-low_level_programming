@@ -13,31 +13,28 @@ int pal_helper(int i, char *s)
 
 int is_palindrome(char *s)
 {
-	int i = 1;
+	int i = len(s);
 
 	return (pal_helper(i, s));
 }
 
 /**
- * pal_helper - finds length of string
+ * pal_helper - compare string to its reverse
  *
- * @i: integer
+ * @i: length of s
  * @s: string
- * Return: length of s
+ * Return: 1 on Success
  */
 
 int pal_helper(int i, char *s)
 {
-	if (*s)
-	{
-		int strlen = len(s);
+	int strlen = len(s);
 
-		if (*s != s[strlen - i])
-			return (0);
-		return (pal_helper(i + 1, s + 1));
-	}
-	i = 1;
-	return (i);
+	if (*s != *(s + i))
+		return (0);
+	else if (*s == 0)
+		return (1);
+	return (pal_helper(s + 1, i - 2));
 }
 
 /**
