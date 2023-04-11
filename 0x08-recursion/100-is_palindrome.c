@@ -28,8 +28,6 @@ int is_palindrome(char *s)
 
 int pal_helper(int i, char *s)
 {
-	int strlen = len(s);
-
 	if (*s != *(s + i))
 		return (0);
 	else if (*s == 0)
