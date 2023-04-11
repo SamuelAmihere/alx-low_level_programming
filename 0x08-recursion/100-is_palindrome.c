@@ -34,7 +34,7 @@ int pal_helper(int i, char *s)
 		return (0);
 	else if (*s == 0)
 		return (1);
-	return (pal_helper(s + 1, i - 2));
+	return (pal_helper(i - 2, s + 1));
 }
 
 /**
