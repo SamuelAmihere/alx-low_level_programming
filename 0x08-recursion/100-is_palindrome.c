@@ -43,8 +43,6 @@ int pal_helper(int i, char *s)
 
 int len(char *s)
 {
-	int i;
-
 	if (*s != '\0')
 	{
 		return (1 + len(s + 1));
