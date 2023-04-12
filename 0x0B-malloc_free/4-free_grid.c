@@ -7,10 +7,9 @@
  * @grid: pointer being evaluated
  * @height: int being evaluated
  *
- * Return: 0 on SUccess
+ * Return: nothing
  */
 
-#include "main.h"
 void free_grid(int **grid, int height)
 {
 	int i;
