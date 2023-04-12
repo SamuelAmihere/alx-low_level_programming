@@ -82,7 +82,7 @@ int get_num_words(char *str)
 	for (i = 0; i < str_length(str); i++)
 	{
 		if (str[i] == ' ' && prev_char != ' ')
-			um_words++;
+			num_words++;
 		prev_char = str[i];
 	}
 
