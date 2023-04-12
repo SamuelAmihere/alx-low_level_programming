@@ -5,12 +5,12 @@ int get_num_words(char *str);
 int str_length(char *str);
 
 /**
- * split_string - splits a string into words
+ * strtow - splits a string into words
  * @str: string to be split
  *
  * Return: pointer to the array of split words
  */
-char **split_string(char *str)
+char **strtow(char *str)
 {
     char **split;
     int i, j = 0, temp = 0, size = 0, words = get_num_words(str);
