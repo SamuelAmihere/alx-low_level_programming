@@ -4,7 +4,7 @@
 
 
 /**
- * **alloc_grid - function to create a pointer to
+ * alloc_grid - function to create a pointer to
  * a 2 dimensional array of integers.
  *
  * @width: int type
