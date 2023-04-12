@@ -10,7 +10,7 @@
  * @width: int type
  * @height: int type
  *
- * Return: grid of 0s
+ * Return: grid pointer
  */
 
 int **alloc_grid(int width, int height)
@@ -41,6 +41,6 @@ int **alloc_grid(int width, int height)
 
 		}
 	}
-	else
-		return (ptr);
+
+	return (ptr);
 }
