@@ -19,7 +19,7 @@ char *argstostr(int ac, char **av)
 	{
 		return (NULL);
 	}
-	for (int i = 0; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		arg = av[i];
 		while (*arg != '\0')
@@ -34,7 +34,7 @@ char *argstostr(int ac, char **av)
 	if (result == NULL)
 		return (NULL);
 	offset = 0;
-	for (int i = 0; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		arg = av[i];
 		while (*arg != '\0')
