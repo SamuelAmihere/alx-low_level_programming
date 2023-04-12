@@ -1,5 +1,5 @@
 #include "main.h"
-#include <stdlib>
+#include <stdlib.h>
 
 int get_num_words(char *str);
 int str_length(char *str);
