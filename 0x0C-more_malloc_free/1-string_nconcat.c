@@ -22,7 +22,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 			count++;
 	} 
 	else
-		*s1 = "";
+		s1 = "";
 
 	if (s2 != NULL)
 	{
@@ -36,7 +36,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		}
 	} 
 	else
-		*s2 = "";
+		s2 = "";
 
 	ptr = malloc(sizeof(s1[0]) * (count + count2) + 1);
 	*(ptr + count + count2) = '\0';
