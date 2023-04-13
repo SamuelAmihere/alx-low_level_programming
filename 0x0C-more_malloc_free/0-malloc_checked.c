@@ -3,21 +3,22 @@
 
 /**
  * malloc_checked - allocates memory
- *  memory
+ * memory
  *
- *  @b: unsigned integer type being allocated
+ * @b: unsigned integer type being allocated
  *
- *   Return: a pointer
+ * Return: a pointer
  */
 
 
 void *malloc_checked(unsigned int b)
 {
-	int *ptr;
+	void *ptr;
 
-	ptr = malloc(b);
+	ptr = (void *) malloc(b);
 
 	if (ptr != NULL)
 		return (ptr);
-	return (98);
+	else
+		return (98);
 }
