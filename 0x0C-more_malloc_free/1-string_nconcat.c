@@ -25,7 +25,7 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	{
 		while (count2 >= 0)
 		{
-			if (*(s2 + count2) == '\0' && count2 == n2)
+			if (*(s2 + count2) == '\0' && count2 >= n2)
 				break;
 			else if  (count2 == n2)
 				break;
