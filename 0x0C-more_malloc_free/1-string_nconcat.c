@@ -37,12 +37,12 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 
 	if (ptr != NULL)
 	{
-		for (i = 0; i < (count + count2); j++)
+		for (i = 0; i < (count + count2); i++)
 		{
-			if (j < count)
-				ptr[j] = s1[j];
+			if (i < count)
+				ptr[i] = s1[i];
 			else
-				ptr[j] = s2[j - count];
+				ptr[i] = s2[i - count];
 		}
 		return (ptr);
 	}
