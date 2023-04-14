@@ -1,7 +1,6 @@
 #include "main.h"
 #include <stdlib.h>
 
-unsigned int get_min(unsigned int int1, unsigned int int2);
 
 /**
  * _realloc - reallocates a memory block using malloc and free
@@ -34,23 +33,4 @@ void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 	ptr = malloc(new_size);
 
 	return (ptr);
-}
-
-
-/**
- * get_min - find minimum
- *
- * @int1: first integer
- * @int2: second integer
- *
- * Return: minimum
- */
-
-unsigned int get_min(unsigned int int1, unsigned int int2)
-{
-	unsigned int i;
-	if (int1 < int2)
-		return (int1);
-	else
-		return (int2);
 }
