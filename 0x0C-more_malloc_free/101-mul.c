@@ -3,7 +3,6 @@
 #include <stdio.h>
 #include <unistd.h>
 
-int is_digit(int c);
 int _strlen(char *s);
 void print_err(void);
 int is_digit(char *s);
