@@ -135,5 +135,5 @@ void print_result(int *result, int len_r)
 	}
 	if (leading_zeros)
 		_putchar('0');
-	_putchar('\n')
+	_putchar('\n');
 }
