@@ -16,14 +16,14 @@ int main(int argc, char **argv)
 	int *result;
 	char *num1, *num2;
 
+	num1 = argv[1];
+	num2 = argv[2];
 	if (argc != 3 || is_digit(num1) == 0 || is_digit(num2) == 0)
 	{
 		printf("Error\n");
 		exit(98);
 	}
 
-	num1 = argv[1];
-	num2 = argv[2];
 	result = multiply(num1, num2);
 
 	if (result != NULL)
