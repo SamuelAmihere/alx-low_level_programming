@@ -16,7 +16,7 @@ int main(int argc, char **argv)
 	int *result;
 	char *num1, *num2;
 
-	if (argc != 3)
+	if (argc != 3 || is_digit(num1) == 0 || is_digit(num2) == 0)
 	{
 		printf("Error\n");
 		exit(98);
@@ -106,13 +106,21 @@ int str_len(char *str)
  * @c: input character to check for digit
  * Return: 0 failure, 1 success
  */
-int is_digit(char c)
+int is_digit(char *c)
 {
-	if (c >= '0' && c <= '9')
-		return (1);
-	printf("Error\n");
+	int i = 1, j = 0;
 
-	return (0);
+	while (c[j] != '\0')
+	{
+		if (c[j] < '0' || c[j] > '9')
+		{
+			i = 0;
+			break;
+		}
+		j++;
+	}
+
+	return (i);
 }
 
 /**
