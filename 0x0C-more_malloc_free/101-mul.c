@@ -1,130 +1,139 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
-#include <unistd.h>
-
-int is_digit(char *c);
-int _strlen(char *s);
-void print_err(void);
-int _putchar(char c);
-
+#include <limits.h>
 /**
- * main - multiplies two positive numbers
+ * main - Entry point
  *
- * @argc: number of arguments
- * @argv: array of arguments
+ * @argc: argument counts
  *
- * Return: o on success
+ * @argv: vector of arguments
+ *
+ * Return: 0 always on success
  */
-
 int main(int argc, char **argv)
 {
-	int tl, l1, l2, c, i, num1, num2, *result, j = 0;
-	char *str1, *str2;
-	_Bool bl;
+	int *result;
+	char *num1, *num2;
 
-	str1 = argv[1];
-	str2 = argv[2];
-	if (!is_digit(str1) || is_digit(str2))
-		print_err();
-
-	l1 = _strlen(str1), l2 = _strlen(str2), tl = l1 + l2 + 1;
-
-	result = malloc(tl * sizeof(int));
-
-	if (result == NULL)
-		return (1);
-
-	for (i = 0; i <= l1 + l2; i++)
-		result[i] = 0;
-	for (i = l1 - 1; i >= 0; i--)
+	if (argc != 3)
 	{
-		c = 0;
-		for (j = l2 - 1; j >= 0; j--)
-		{
-			num1 = str1[i] - '0';
-			num2 = str2[j] - '0';
-			c += result[i + j + 1] + (num1 * num2);
-			result[i + j] = c % 10;
-			c /= 10;
-		}
-		result[i] += c;
+		printf("Error\n");
+		exit(98);
 	}
-	bl = 1;
 
-	for (i = 0; i < tl - 1; i++)
-	{
-		if (result[i] != 0)
-		{
-			bl = 0;
-		}
-		if (!bl)
-			_putchar(result[i] + '0');
-		}
-	if (bl)
-		_putchar('0');
-	_putchar('\n');
+	num1 = argv[1];
+	num2 = argv[2];
+	result = multiply(num1, num2);
+
+	if (result != NULL)
+		print_result(result, str_len(num1) + str_len(num2));
+	else
+		exit(98);
 	free(result);
 	return (0);
-
 }
 
 /**
- * _isdigit - checks whether a given input is a digit
- *
- * @c: a parameter to check for digit
- *
- * Return: 1 if c is a digit, 0 otherwise
+ * multiply - multiplies 2 #'s, prints result, must be 2 #'s
+ * @num1: factor # 1 (is the smaller of 2 numbers)
+ * @num2: factor # 2 (is the larger of 2 numbers)
+ * Return: 0 fail, 1 success
  */
-int is_digit(char *s)
+int *multiply(char *num1, char *num2)
 {
-	int i;
-	for (i = 0; s[i]; i++)
+	int len1 = str_len(num1);
+	int len2 = str_len(num2);
+	int *result = _calloc(sizeof(int), len1 + len2);
+	int i, j, carry, sum;
+
+	for (i = len1 - 1; i >= 0; i--)
 	{
-		if (s[i] < '0' || s[i] > '9')
-			return (0);
+		carry = 0;
+		for (j = len2 - 1; j >= 0; j--)
+		{
+			sum = (num1[i] - '0') * (num2[j] - '0') +
+				result[i + j + 1] + carry;
+			result[i + j + 1] = sum % 10;
+			carry = sum / 10;
+		}
+		result[i + j + 1] = carry;
 	}
-	return (1);
+	return (result);
 }
 
 /**
- * _strlen - returns the length of a string.
- *
- * @s: input string.
- *
- *
- * Return: length of a string.
+ * _calloc - allocates memory for an array using malloc
+ * @bytes: bytes of memory needed per requested size
+ * @size: size in bytes of each element
+ * Return: pointer to the allocated memory
  */
-int _strlen(char *s)
+void *_calloc(unsigned int bytes, unsigned int size)
 {
-	int count = 0;
+	unsigned int i;
+	char *ptr;
 
-	while (*(s + count) != '\0')
-		count++;
-	return (count);
+	if (bytes == 0 || size == 0)
+		return (NULL);
+	if (size >= UINT_MAX / bytes || bytes >= UINT_MAX / size)
+		return (NULL);
+	ptr = malloc(size * bytes);
+	if (ptr == NULL)
+		return (NULL);
+	for (i = 0; i < bytes * size; i++)
+		ptr[i] = 0;
+
+	return ((void *)ptr);
 }
 
 /**
- * print_err - print and exit main due to error
- *
- * Return: nothing
+ * str_len - finds string length
+ * @str: input pointer to string
+ * Return: length of string
  */
-void print_err(void)
+int str_len(char *str)
 {
+	int len;
+
+	for (len = 0; *str != '\0'; len++)
+		len++, str++;
+
+	return (len / 2);
+}
+
+/**
+ * is_digit - checks for digits
+ * @c: input character to check for digit
+ * Return: 0 failure, 1 success
+ */
+int is_digit(char c)
+{
+	if (c >= '0' && c <= '9')
+		return (1);
 	printf("Error\n");
-	exit(98);
+
+	return (0);
 }
 
 /**
- * _putchar - writes the character c to stdout
- *
- * @c: The character to print
- *
- * Return: On success 1.
- * On error, -1 is returned, and errno is set appropriately.
+ * print_result - prints my array of the hopeful product here
+ * @result: pointer to int array with numbers to add
+ * @len_r: length of result array
+ * Return: void
  */
-
-int _putchar(char c)
+void print_result(int *result, int len_r)
 {
-	return (write(1, &c, 1));
+	int i = 0;
+	int leading_zeros = 1;
+
+	for (i = 0; i < len_r; i++)
+	{
+		if (result[i] != 0)
+			leading_zeros = 0;
+		if (!leading_zeros)
+			_putchar(result[i] + '0');
+	}
+	if (leading_zeros)
+		_putchar('0');
+	_putchar('\n')
 }
