@@ -19,7 +19,7 @@ int _putchar(char c);
 
 int main(int argc, char **argv)
 {
-	int l, l1, l2, c, i, num1, num2, *result, j = 0;
+	int tl, l1, l2, c, i, num1, num2, *result, j = 0;
 	char *str1, *str2;
 	_Bool bl;
 
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
 	}
 	bl = 1;
 
-	for (i = 0; i < til - 1; i++)
+	for (i = 0; i < tl - 1; i++)
 	{
 		if (result[i] != 0)
 		{
