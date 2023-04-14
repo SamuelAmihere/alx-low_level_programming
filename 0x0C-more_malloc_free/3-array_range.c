@@ -12,15 +12,15 @@
 
 int *array_range(int min, int max)
 {
-	int i, count;
+	int i, count, m = max;
 	int *ptr;
 
 	if (min > max)
 		return (NULL);
 
-	while (max >= min)
+	while (m >= min)
 	{
-		max -= 1;
+		m -= 1;
 		count++;
 	}
 
