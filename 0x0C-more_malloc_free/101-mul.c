@@ -1,10 +1,12 @@
 #include "main.h"
 #include <stdlib.h>
 #include <stdio.h>
+#include <unistd.h>
 
 int is_digit(int c);
 int _strlen(char *s);
 void print_err(void);
+int is_digit(char *s);
 
 /**
  * main - multiplies two positive numbers
@@ -17,7 +19,7 @@ void print_err(void);
 
 int main(int argc, char **argv)
 {
-	int l, l1, l2, c, i, j, num1, num2, *result, j = 0;
+	int l, l1, l2, c, i, num1, num2, *result, j = 0;
 	char *str1, *str2;
 	_Bool bl;
 
@@ -42,19 +44,19 @@ int main(int argc, char **argv)
 		{
 			num1 = str1[i] - '0';
 			num2 = str2[j] - '0';
-			c += result[i + j + 1] (num1 * num2);
+			c += result[i + j + 1] + (num1 * num2);
 			result[i + j] = c % 10;
 			c /= 10;
 		}
-		result[i] += carry;
+		result[i] += c;
 	}
-	bl = true;
+	bl = 1;
 
-	for (i = 0; i < l - 1; i++)
+	for (i = 0; i < til - 1; i++)
 	{
 		if (result[i] != 0)
 		{
-			bl = false;
+			bl = 0;
 		}
 		if (!bl)
 			_putchar(result[i] + '0');
@@ -74,12 +76,15 @@ int main(int argc, char **argv)
  *
  * Return: 1 if c is a digit, 0 otherwise
  */
-int _isdigit(int c)
+int is_digit(char *s)
 {
-	if (c >= 48 && c <= 57)
-		return (1);
-	else
-		return (0);
+	int i;
+	for (i = 0; s[i]; i++)
+	{
+		if (s[i] < '0' || s[i] > '9')
+			return (0);
+	}
+	return (1);
 }
 
 /**
@@ -108,4 +113,18 @@ void print_err(void)
 {
 	printf("Error\n");
 	exit(98);
+}
+
+/**
+ * _putchar - writes the character c to stdout
+ *
+ * @c: The character to print
+ *
+ * Return: On success 1.
+ * On error, -1 is returned, and errno is set appropriately.
+ */
+
+int _putchar(char c)
+{
+	return (write(1, &c, 1));
 }
