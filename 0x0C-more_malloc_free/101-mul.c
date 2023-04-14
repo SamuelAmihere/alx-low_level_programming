@@ -3,9 +3,10 @@
 #include <stdio.h>
 #include <unistd.h>
 
+int is_digit(char *c);
 int _strlen(char *s);
 void print_err(void);
-int is_digit(char *s);
+int _putchar(char c);
 
 /**
  * main - multiplies two positive numbers
