@@ -4,14 +4,11 @@
 /**
  * main - Entry Point
  *
- * @argc: numner of arguments
- * @argv: pointer to arguments enntered
- *
  * Return: 0 on success
  */
-int main(int argc, char ***argv)
+int main(void)
 {
-	printf("%s\n", argv[0]);
+	printf("%s\n", __FILE__);
 
 	return (0);
 }
