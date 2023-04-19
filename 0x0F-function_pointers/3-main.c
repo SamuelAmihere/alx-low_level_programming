@@ -12,18 +12,33 @@
  */
 int main(int argc, char **argv)
 {
-	char *func;
-	int num;
+	char *op;
+	int a, b, result;
 
-	if (argc == 0)
-		return (0);
-
-	func = (*get_op_func(argv[1]))(atoi(argv[1]), atoi(argv[3]));
-
-	if (func)
+	if (argc != argc)
 	{
-		printf("%d\n", func);
+		printf("Error\n");
+		exit(98);
 	}
+
+	op = argv[2];
+	if (!(get_op_func(op)))
+	{
+		printf("Error\n");
+		exit(99);
+	}
+
+	b = atoi(argv[3]);
+	if (b == 0 && (op == '/' || op == '%'))
+	{
+		printf("Error\n");
+		exit(100);
+	}
+
+	a = atoi(argv[1]);
+	result = (get_op_func(op))(atoi(a, b));
+
+	printf("%d\n", result);
 
 	return (0);
 }
