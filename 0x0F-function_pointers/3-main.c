@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 	char *op;
 	int a, b, result;
 
-	if (argc != argc)
+	if (argc != 4)
 	{
 		printf("Error\n");
 		exit(98);
@@ -29,14 +29,14 @@ int main(int argc, char **argv)
 	}
 
 	b = atoi(argv[3]);
-	if (b == 0 && (op == '/' || op == '%'))
+	if (b == 0 && (*op == '/' || *op == '%'))
 	{
 		printf("Error\n");
 		exit(100);
 	}
 
 	a = atoi(argv[1]);
-	result = (get_op_func(op))(atoi(a, b));
+	result = (get_op_func(op))(a, b);
 
 	printf("%d\n", result);
 
