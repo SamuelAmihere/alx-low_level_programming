@@ -43,15 +43,13 @@ int main(int argc, char **argv)
  *
  * Return: nothing
  */
-void print_opcodes(int n, int (*addr)(int, char **))
+void print_opcodes(int n, char *add)
 {
 	int i;
-	unsigned char code;
 
 	for (i = 0; i < n; i++)
 	{
-		code = *(unsigned char *)addr;
-		printf("%.2x", code);
+		printf("%.2x", add[i]);
 
 		if (i != n - 1)
 			printf(" ");
