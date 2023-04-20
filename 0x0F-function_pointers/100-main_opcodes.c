@@ -15,6 +15,7 @@ int main(int argc, char **argv)
 {
 	int bytes;
 	char *addr = (char *) main;
+	void (*print_ptr)(int, char *) = &print_opcodes;
 
         if (argc != 2)
         {
@@ -29,7 +30,7 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 
-	print_opcodes(bytes, addr);
+	print_ptr(bytes, addr);
 	printf("\n");
 
 	return (0);
