@@ -49,7 +49,7 @@ void print_opcodes(int n, char *add)
 
 	for (i = 0; i < n; i++)
 	{
-		printf("%.2x", add[i]);
+		printf("%.2hhx", add[i]);
 
 		if (i < (n - 1))
 			printf(" ");
