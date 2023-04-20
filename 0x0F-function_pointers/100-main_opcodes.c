@@ -13,19 +13,19 @@ void print_opcodes(int n, char *add);
  */
 int main(int argc, char **argv)
 {
-	int bytes, (*func_ptr)(int, char **) = main;
+	int bytes;
+
+        if (argc != 2)
+        {
+                printf("Error\n");
+                exit(1);
+        }
 
 	bytes = atoi(argv[1]);
 	if (bytes < 0)
 	{
 		printf("Error\n");
-		exit(1);
-	}
-
-	if (argc != 2)
-	{
-		printf("Error\n");
-		exit(1);
+		exit(2);
 	}
 
 	print_opcodes(bytes, (char *)&main);
@@ -51,7 +51,7 @@ void print_opcodes(int n, char *add)
 	{
 		printf("%.2x", add[i]);
 
-		if (i != n - 1)
+		if (i < (n - 1))
 			printf(" ");
 		
 		i++;	
