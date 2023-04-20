@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	print_opcodes(bytes, func_ptr);
+	print_opcodes(bytes, (char *)&main);
 	printf("\n");
 
 	return (0);
