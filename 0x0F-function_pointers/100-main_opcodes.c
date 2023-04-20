@@ -40,6 +40,7 @@ int main(int argc, char **argv)
  * print_opcodes - Prints the opcodes
  *
  * @n: elements of an array
+ * @add: address to main function
  *
  * Return: nothing
  */
@@ -53,6 +54,5 @@ void print_opcodes(int n, char *add)
 
 		if (i < (n - 1))
 			printf(" ");
-
 	}
 }
