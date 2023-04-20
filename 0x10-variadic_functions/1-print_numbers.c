@@ -7,7 +7,6 @@
  *
  * @separator: string to be printed between numbers
  * @n: number of integers passed to the function
- * @...: actual integers passed to the argument
  *
  * Return: nothing
  */
@@ -27,8 +26,7 @@ void print_numbers(const char *separator, const unsigned int n, ...)
 				printf("%s", separator);
 		}
 	}
+	printf("\n");
 
 	va_end(l);
-
-	printf("\n");
 }
