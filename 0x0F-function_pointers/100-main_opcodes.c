@@ -54,6 +54,5 @@ void print_opcodes(int n, char *add)
 		if (i < (n - 1))
 			printf(" ");
 
-		i++;
 	}
 }
