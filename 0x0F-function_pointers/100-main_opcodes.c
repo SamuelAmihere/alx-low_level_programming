@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_opcodes(int n);
+void print_opcodes(size_t n, int (*add)(int, char **));
 
 /**
  * main - Entry point
@@ -13,7 +13,7 @@ void print_opcodes(int n);
  */
 int main(int argc, char **argv)
 {
-	int i, bytes, (*add_ptr)(int, char **) = main;
+	int bytes, (*func_ptr)(int, char **) = main;
 
 	bytes = atoi(argv[1]);
 	if (bytes < 0)
@@ -28,7 +28,8 @@ int main(int argc, char **argv)
 		exit(1);
 	}
 
-	print_opcodes(n);
+	print_opcodes(bytes, func_ptr);
+	printf("\n");
 
 	return (0);
 
@@ -42,13 +43,19 @@ int main(int argc, char **argv)
  *
  * Return: nothing
  */
-void print_opcodes(int n)
+void print_opcodes(int n, int (*addr)(int, char **))
 {
-	unsigned char *p = print_opcodes;
+	int i;
+	unsigned char code;
 
-	for (int i = 0; i < n; i++)
+	for (i = 0; i < n; i++)
 	{
-		printf("%02x", p[i]);
+		code = *(unsigned char *)addr;
+		printf("%.2x", code);
+
+		if (i != n - 1)
+			printf(" ");
+		
+		i++;	
 	}
-	printf("\n");
 }
