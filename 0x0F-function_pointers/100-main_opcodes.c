@@ -14,6 +14,7 @@ void print_opcodes(int n, char *add);
 int main(int argc, char **argv)
 {
 	int bytes;
+	char *addr = (char *) main;
 
         if (argc != 2)
         {
@@ -28,7 +29,7 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 
-	print_opcodes(bytes, (char *)main);
+	print_opcodes(bytes, addr);
 	printf("\n");
 
 	return (0);
@@ -49,7 +50,7 @@ void print_opcodes(int n, char *add)
 
 	for (i = 0; i < n; i++)
 	{
-		printf("%02xx", add[i] & 0xFF);
+		printf("%02x", add[i] & 0xFF);
 
 		if (i < (n - 1))
 			printf(" ");
