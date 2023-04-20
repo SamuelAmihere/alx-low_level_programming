@@ -1,6 +1,5 @@
-#include <stdarg.h>
-
 #include "variadic_functions.h"
+#include <stdarg.h>
 
 /**
  * sum_them_all - calculates sum of numbers
@@ -8,16 +7,12 @@
  * @n: number of arguments to sum
  * @...: All arguments passed
  *
- * Return: sum of arguments
+ * Return: sum of arguments, 0 if n == 0
  */
 int sum_them_all(const unsigned int n, ...)
 {
-	int sum = 0;
-	const unsigned int i;
+	unsigned int i, sum = 0;
 	va_list l;
-
-	if (n == 0)
-		return (0);
 
 	va_start(l, n);
 
