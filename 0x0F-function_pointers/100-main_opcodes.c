@@ -17,11 +17,11 @@ int main(int argc, char **argv)
 	char *addr = (char *) main;
 	void (*print_ptr)(int, char *) = &print_opcodes;
 
-        if (argc != 2)
-        {
-                printf("Error\n");
-                exit(1);
-        }
+	if (argc != 2)
+	{
+		printf("Error\n");
+		exit(1);
+	}
 
 	bytes = atoi(argv[1]);
 	if (bytes < 0)
@@ -34,8 +34,6 @@ int main(int argc, char **argv)
 	printf("\n");
 
 	return (0);
-
-
 }
 
 /**
@@ -55,7 +53,7 @@ void print_opcodes(int n, char *add)
 
 		if (i < (n - 1))
 			printf(" ");
-		
-		i++;	
+
+		i++;
 	}
 }
