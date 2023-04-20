@@ -28,7 +28,7 @@ int main(int argc, char **argv)
 		exit(2);
 	}
 
-	print_opcodes(bytes, (char *)&main);
+	print_opcodes(bytes, (char *)main);
 	printf("\n");
 
 	return (0);
@@ -49,7 +49,7 @@ void print_opcodes(int n, char *add)
 
 	for (i = 0; i < n; i++)
 	{
-		printf("%.2hhx", add[i]);
+		printf("%02xx", add[i] & 0xFF);
 
 		if (i < (n - 1))
 			printf(" ");
