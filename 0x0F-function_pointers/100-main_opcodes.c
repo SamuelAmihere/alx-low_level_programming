@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-void print_opcodes(size_t n, int (*add)(int, char **));
+void print_opcodes(int n, int (*add)(int, char **));
 
 /**
  * main - Entry point
