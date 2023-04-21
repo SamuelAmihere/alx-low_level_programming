@@ -19,14 +19,13 @@ void print_all(const char * const format, ...)
 		{"f", print_float},
 		{NULL, NULL}
 	};
-	unsigned int i, j;
+	unsigned int i = 0, j;
 	char *sep = "";
 	va_list l;
 
 	va_start(l, format);
 
-	i = 0;
-	while (format[i] && format)
+	while (format[i] && format && format[i] != '\0')
 	{
 		j = 0;
 		while (arr[j].arg != NULL)
