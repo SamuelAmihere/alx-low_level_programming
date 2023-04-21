@@ -19,15 +19,16 @@ void print_all(const char * const format, ...)
 		{"s", print_string},
 		{NULL, NULL}
 	};
-	int i = 0, j = 0;
+	int i = 0, j;
 	char *sep = "";
 	va_list l;
 
 	va_start(l, format);
 
-	while (format[i] != '\0')
+	while (format[i] && format)
 	{
-		while (j < 4 && chars[j].arg != NULL)
+		j = 0;
+		while (chars[j].arg != NULL)
 		{
 			if (*(chars[j].arg) == format[i])
 			{
