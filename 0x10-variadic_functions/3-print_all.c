@@ -23,7 +23,7 @@ void print_all(const char * const format, ...)
 	char *sep = "";
 	va_list l;
 
-	va_start(l, n);
+	va_start(l, format);
 
 	while (format[i] != '\0')
 	{
@@ -32,7 +32,7 @@ void print_all(const char * const format, ...)
 			if (*(chars[j].arg) == format[i])
 			{
 				printf("%s", sep);
-				chars[k].f(l);
+				chars[j].f(l);
 				sep = ", ";
 				break;
 			}
@@ -40,6 +40,9 @@ void print_all(const char * const format, ...)
 
 		j++;
 	}
+	printf("\n");
+
+	va_end(l);
 }
 
 /**
@@ -51,7 +54,7 @@ void print_all(const char * const format, ...)
  */
 void print_char(va_list l)
 {
-	printf("%c", va_arg(charlist, int));
+	printf("%c", va_arg(l, int));
 }
 
 /**
@@ -63,7 +66,7 @@ void print_char(va_list l)
  */
 void print_int(va_list l)
 {
-	printf("%d", va_arg(charlist, int));
+	printf("%d", va_arg(l, int));
 }
 
 /**
@@ -75,7 +78,7 @@ void print_int(va_list l)
  */
 void print_float(va_list l)
 {
-	printf("%f", va_arg(charlist, double));
+	printf("%f", va_arg(l, double));
 }
 
 /**
@@ -89,7 +92,7 @@ void print_string(va_list l)
 {
 	char *s;
 
-	s = va_arg(charlist, char *);
+	s = va_arg(l, char *);
 	if (s == NULL)
 	{
 		printf("%s", s);
