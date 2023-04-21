@@ -12,14 +12,14 @@
  */
 void print_all(const char * const format, ...)
 {
-	dtype chars[] = {
+	chars arr[] = {
 		{"c", print_char},
+		{"s", print_string},
 		{"i", print_int},
 		{"f", print_float},
-		{"s", print_string},
 		{NULL, NULL}
 	};
-	int i = 0, j;
+	unsigned int i = 0, j;
 	char *sep = "";
 	va_list l;
 
@@ -28,12 +28,12 @@ void print_all(const char * const format, ...)
 	while (format[i] && format)
 	{
 		j = 0;
-		while (chars[j].arg != NULL)
+		while (arr[j].arg != NULL)
 		{
-			if (*(chars[j].arg) == format[i])
+			if (*(arr[j].arg) == format[i])
 			{
 				printf("%s", sep);
-				chars[j].f(l);
+				arr[j].f(l);
 				sep = ", ";
 				break;
 			}
