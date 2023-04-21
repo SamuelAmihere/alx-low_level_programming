@@ -55,7 +55,7 @@ void print_all(const char * const format, ...)
  */
 void print_char(va_list l)
 {
-	printf("%c", va_arg(l, char));
+	printf("%c", va_arg(l, int));
 }
 
 /**
@@ -67,7 +67,7 @@ void print_char(va_list l)
  */
 void print_int(va_list l)
 {
-	printf("%d", va_arg(l, int));
+	printf("%i", va_arg(l, int));
 }
 
 /**
