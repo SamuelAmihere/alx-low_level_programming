@@ -42,9 +42,8 @@ void print_all(const char * const format, ...)
 
 		i++;
 	}
-	printf("\n");
-
 	va_end(l);
+	printf("\n");
 }
 
 /**
@@ -56,7 +55,7 @@ void print_all(const char * const format, ...)
  */
 void print_char(va_list l)
 {
-	printf("%c", va_arg(l, int));
+	printf("%c", va_arg(l, char));
 }
 
 /**
