@@ -38,7 +38,7 @@ void print_all(const char * const format, ...)
 			}
 		}
 
-		j++;
+		i++;
 	}
 	printf("\n");
 
