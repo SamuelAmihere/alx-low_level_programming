@@ -96,9 +96,7 @@ void print_string(va_list l)
 
 	s = va_arg(l, char *);
 	if (s == NULL)
-	{
-		printf("%s", s);
-		return;
-	}
+		s = "(nil)";
+
 	printf("%s", s);
 }
