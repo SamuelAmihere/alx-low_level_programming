@@ -18,11 +18,12 @@ listint_t *get_nodeint_at_index(listint_t *head,
 
 	if (index > 0)
 	{
-		*temp = head;
+		temp = head;
 		while (temp && i < index)
 		{
 			temp = temp->next;
 		}
+		free(temp);
 	}
 	return (head);
 }
