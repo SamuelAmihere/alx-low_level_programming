@@ -20,8 +20,6 @@ listint_t *get_nodeint_at_index(listint_t *head,
 	prev = head;
 	if (!prev)
 		return (NULL);
-	if (head->next == NULL || index == 1)
-		return (head);
 
 	curr = head->next;
 	while (curr && i < index)
