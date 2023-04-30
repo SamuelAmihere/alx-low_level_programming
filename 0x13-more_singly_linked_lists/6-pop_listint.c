@@ -16,9 +16,9 @@ listint_t pop_listint(listint_t **head)
 	if (!head)
 		return (0);
 	temp = (*head)->next;
-	if (head)
-	{
-		*head = temp;
-		return (*head);
-	}
+
+	*head = temp;
+
+	return (*head);
+
 }
