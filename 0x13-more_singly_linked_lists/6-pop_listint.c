@@ -9,15 +9,20 @@
  *
  * Return: the address of the new element, or NULL if it failed
  */
-listint_t pop_listint(listint_t **head)
+int pop_listint(listint_t **head)
 {
 	listint_t *temp;
+	int n = 0;
 
-	if (!head)
-		return (0);
-	temp = (*head)->next;
+	temp = malloc(sizeof(listint_t));
+	if (temp && head)
+	{
+		n = (int) (*head)->n;
+		temp = *head;
+		*head = temp->next;
+	}
 
-	*head = temp;
+	free(temp);
 
 	return (*head);
 
