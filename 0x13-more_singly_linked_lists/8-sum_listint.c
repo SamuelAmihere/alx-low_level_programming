@@ -25,6 +25,9 @@ int sum_listint(listint_t *head)
 int add_all(listint_t *head)
 {
 	if (!head)
-		return head->n + add_all(head->next)
-	return (0);
+		return (0);
+	if (head->next)
+		return (head->n + add_all(head->next));
+	else
+		return (head->n);
 }
