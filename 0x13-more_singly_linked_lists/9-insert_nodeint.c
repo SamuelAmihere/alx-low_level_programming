@@ -49,5 +49,4 @@ listint_t *insert_nodeint_at_index(listint_t **head,
 	}
 
 	return (new);
-
 }
