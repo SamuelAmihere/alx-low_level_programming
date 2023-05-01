@@ -23,7 +23,7 @@ listint_t *insert_nodeint_at_index(listint_t **head,
 	temp = *head;
 	new = malloc(sizeof(listint_t));
 
-	if (!temp && !new)
+	if (!new)
 		return (NULL);
 	else
 	{
