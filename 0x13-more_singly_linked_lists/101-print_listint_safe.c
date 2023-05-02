@@ -18,9 +18,11 @@ size_t print_listint_safe(const listint_t *h)
 		if (!h->n)
 			exit(98);
 		else
+		{
 			printf("[%p] %d\n", (void *)h, h->n);
-		count += 1;
-		h = h->next;
+			count += 1;
+			h = h->next;
+		}
 	}
 
 	return (count);
