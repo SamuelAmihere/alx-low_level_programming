@@ -1,6 +1,7 @@
 #include "lists.h"
 #include <stdlib.h>
 
+size_t listint_len(const listint_t *h);
 
 /**
  * insert_nodeint_at_index - Inserts a new node at a given
@@ -22,7 +23,7 @@ listint_t *insert_nodeint_at_index(listint_t **head,
 
 	new = malloc(sizeof(listint_t));
 
-	if (!new || idx > listint_len(*head))
+	if (!new || idx > listint_len(head))
 	{
 		return (NULL);
 	}
@@ -53,4 +54,25 @@ listint_t *insert_nodeint_at_index(listint_t **head,
 	}
 
 	return (new);
+}
+
+
+/**
+ * listint_len - Finds number of elements in a linked
+ *
+ * @h: struct whose elements to be print elememts
+ *
+ * Return: number of elements in a linked
+ */
+size_t listint_len(const listint_t *h)
+{
+	size_t count = 0;
+
+	while (h)
+	{
+		count += 1;
+		h = h->next;
+	}
+
+	return (count);
 }
