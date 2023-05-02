@@ -10,7 +10,7 @@
  */
 size_t print_listint_safe(const listint_t *h)
 {
-	listint_t *curr = head;
+	listint_t *curr = h;
 	size_t count = 0;
 
 	while (curr)
@@ -19,7 +19,7 @@ size_t print_listint_safe(const listint_t *h)
 		printf("[%p] %d\n", (void *)curr, curr->n);
 		curr = curr->next;
 
-		if (curr >= head && curr)
+		if (curr >= h && curr)
 		{
 			printf("-> [%p] %d\n", (void *)curr, curr->n);
 			exit(98);
