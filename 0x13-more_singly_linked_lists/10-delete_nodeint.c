@@ -38,14 +38,15 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 			curr = curr->next;
 			i += 1;
 		}
-	}
+	
 
-	if (curr)
-	{
-		temp = curr;
-		prev->next = curr->next;
-		free(temp);
-		return (1);
+		if (curr)
+		{
+			temp = curr;
+			prev->next = curr->next;
+			free(temp);
+			return (1);
+		}
 	}
 
 	return (-1);
