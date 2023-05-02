@@ -10,7 +10,7 @@
  */
 size_t print_listint_safe(const listint_t *h)
 {
-	listint_t *curr = h;
+	const listint_t *curr = h;
 	size_t count = 0;
 
 	while (curr)
