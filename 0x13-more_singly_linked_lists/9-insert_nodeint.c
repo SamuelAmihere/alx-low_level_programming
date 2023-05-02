@@ -30,12 +30,21 @@ listint_t *insert_nodeint_at_index(listint_t **head,
 
 	prev = NULL;
 	temp = *head;
+
+	if (i == 0)
+	{
+		new->next = *head;
+		*head = new;
+		return (new);
+	}
+
 	while (temp && i < idx)
 	{
 		prev = temp;
 		temp = temp->next;
 		i += 1;
 	}
+
 
 	if (prev)
 	{
