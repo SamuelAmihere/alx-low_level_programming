@@ -1,7 +1,6 @@
 #include "lists.h"
 #include <stdlib.h>
 
-size_t listint_len(const listint_t *h);
 
 /**
  * delete_nodeint_at_index - Inserts a new node at a given
@@ -18,49 +17,34 @@ int delete_nodeint_at_index(listint_t **head, unsigned int index)
 	listint_t *temp, *prev, *curr;
 	unsigned int i = 0;
 
-
-	if (*head || index > listint_len(*head))
+	if (index == 0 && *head == NULL)
 		return (-1);
-
-	prev = *head;
-	curr = (*head)->next;
-
-	while (curr && i < index)
+	else if (index == 0 && (*head))
 	{
-		prev = curr;
-		curr = curr->next;
-		i += 1;
-	}
-
-
-	if (curr)
-	{
-		temp = curr;
-		prev->next = curr->next;
-		free(temp);
+		prev = *head;
+		*head = (*head)->next;
+		free(prev);
 		return (1);
+	}
+	else
+	{
+		curr = (*head)->next;
+		while (curr && i < index)
+		{
+			prev = curr;
+			curr = curr->next;
+			i += 1;
+		}
+
+		if (curr)
+		{
+			temp = curr;
+			prev->next = curr->next;
+			free(temp);
+			return (1);
+		}
 	}
 
 	return (-1);
-}
 
-
-/**
- * listint_len - Finds number of elements in a linked
- *
- * @h: struct whose elements to be print elememts
- *
- * Return: number of elements in a linked
- */
-size_t listint_len(const listint_t *h)
-{
-	size_t count = 0;
-
-	while (h)
-	{
-		count += 1;
-		h = h->next;
-	}
-
-	return (count);
 }
