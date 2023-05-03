@@ -34,7 +34,7 @@ size_t print_listint_safe(const listint_t *h)
 
 	}
 
-	free_listnode(curr);
+	free_listnode(temp);
 
 	return (count);
 }
