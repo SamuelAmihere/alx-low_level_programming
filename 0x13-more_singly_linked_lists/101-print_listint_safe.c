@@ -33,5 +33,17 @@ size_t print_listint_safe(const listint_t *h)
 		curr = curr->next;
 	}
 
+	if (h)
+	{
+		checker = NULL;
+		curr = *h;
+		while ((checker = curr))
+		{
+			curr = curr->next;
+			free(checker);
+		}
+		*head = NULL;
+	}
+
 	return (count);
 }
