@@ -11,9 +11,13 @@
  */
 size_t print_listint_safe(const listint_t *h)
 {
+
 	size_t count;
 
 	count = 0;
+
+	if (h == NULL)
+		exit(98);
 
 	while (h)
 	{
