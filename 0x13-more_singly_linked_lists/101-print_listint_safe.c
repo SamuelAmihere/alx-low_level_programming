@@ -1,7 +1,6 @@
 #include "lists.h"
 #include <stdlib.h>
 
-void free_listnode(listnode_t *head);
 
 /**
  * print_listint_safe - prints a listint_t linked list
