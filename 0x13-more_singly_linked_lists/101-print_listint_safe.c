@@ -16,7 +16,7 @@ size_t print_listint_safe(const listint_t *h)
 
 	curr = h;
 	if (!curr)
-		exit(98);
+		return (count);
 
 	while (curr)
 	{
