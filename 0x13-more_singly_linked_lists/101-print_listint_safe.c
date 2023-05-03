@@ -30,8 +30,6 @@ size_t print_listint_safe(const listint_t *h)
 		curr = curr->next;
 
 	}
-	if (count != 0)
-		return (count);
-	else
-		exit(98);
+
+       return (count);
 }
