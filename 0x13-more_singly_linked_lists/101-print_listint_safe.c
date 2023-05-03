@@ -14,11 +14,10 @@ size_t print_listint_safe(const listint_t *h)
 	const listint_t *curr;
 	size_t count = 0;
 
-	curr = h;
-
-	if (!curr)
+	if (!h)
 		exit(98);
 
+	curr = h;
 	while (curr)
 	{
 		printf("[%p] %d\n", (void *)curr, curr->n);
