@@ -24,10 +24,12 @@ size_t print_listint_safe(const listint_t *h)
 		printf("[%p] %d\n", (void *)temp, temp->n);
 
 		if (temp < curr)
+		{
+			printf("-> [%p] %d\n", (void *)curr, curr->n);
 			break;
+		}
 
 	}
-	printf("-> [%p] %d\n", (void *)curr, curr->n);
 
 	return (count);
 }
