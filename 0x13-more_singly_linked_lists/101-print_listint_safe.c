@@ -31,5 +31,8 @@ size_t print_listint_safe(const listint_t *h)
 
 	}
 
+	if (curr != NULL)
+		printf("-> [%p] %d\n", (void *)curr, curr->n);
+
 	return (count);
 }
