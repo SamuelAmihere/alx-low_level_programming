@@ -11,24 +11,22 @@
  */
 size_t print_listint_safe(const listint_t *h)
 {
-	const listint_t *curr;
 	size_t count;
 
 	count = 0;
-	curr = h;
 
-	while (curr && curr->next)
+	while (h)
 	{
-		printf("[%p] %d\n", (void *)curr, curr->n);
+		printf("[%p] %d\n", (void *)h, h->n);
 		count += 1;
 
-		if ((curr->next) >= curr)
+		if ((h->next) >= h)
 		{
-			printf("-> [%p] %d\n", (void *)curr->next,
-					(curr->next)->n);
+			printf("-> [%p] %d\n", (void *)h->next,
+					(h->next)->n);
 			break;
 		}
-		curr = curr->next;
+		h = h->next;
 
 	}
 
