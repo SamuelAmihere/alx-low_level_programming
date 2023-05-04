@@ -11,27 +11,27 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *curr, *temp;
+	listint_t *current, *new;
 	size_t count = 0;
 
-	curr = *h;
-	if (!curr)
-		exit(98);
-	while (curr)
-	{
-		temp = curr;
-		curr = curr->next;
-		count += 1;
-		printf("[%p] %d\n", (void *)temp, temp->n);
+	if (!h || !*h)
+		return (0);
 
-		if (temp < curr)
+	current = *h;
+
+	while (current)
+	{
+		count++;
+		new = current->next;
+		free(current);
+		current = new;
+
+		if (current >= new)
 		{
-			printf("-> [%p] %d\n", (void *)curr, curr->n);
+			*h = NULL;
 			break;
 		}
-
 	}
-
 
 	return (count);
 }
