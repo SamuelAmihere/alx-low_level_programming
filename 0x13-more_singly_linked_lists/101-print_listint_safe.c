@@ -11,14 +11,14 @@
  */
 size_t print_listint_safe(const listint_t *h)
 {
-	listint_t *curr = h;
+	listint_t *curr;
 	size_t cnt;
 
 	cnt = 0;
-
+	curr = h;
 	while (curr)
 	{
-		printf("[%p] %d\n", (void *)curr, curr>n);
+		printf("[%p] %d\n", (void *)curr, curr->n);
 		cnt += 1;
 
 		if ((curr->next) >= curr)
