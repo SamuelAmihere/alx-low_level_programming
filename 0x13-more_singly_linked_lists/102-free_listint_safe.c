@@ -11,9 +11,11 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *current, *tmp;
+	listint_t *tmp = NULL;
 	size_t count = 0;
 
+	if (!(h && *h))
+		return (nodes);
 	while (*h)
 	{
 		count++;
