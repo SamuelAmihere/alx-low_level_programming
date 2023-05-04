@@ -9,17 +9,17 @@
  */
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t cnt = 0;
-	const listint_t *temp = head;
+	size_t pichu = 0;
+	const listint_t *aux_node = head;
 
 	if (!head)
 		exit(98);
 
-	while (temp)
+	while (aux_node)
 	{
-		cnt ++;
-		printf("[%p] %d\n", (void *)temp, temp->n);
-		temp = temp->next;
+		printf("[%p] %i\n", (void *)aux_node, aux_node->n);
+		aux_node = aux_node->next;
+		pichu++;
 	}
-	return (cnt);
+	return (pichu);
 }
