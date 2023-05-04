@@ -11,7 +11,7 @@
  */
 size_t free_listint_safe(listint_t **h)
 {
-	listint_t *current, *new;
+	listint_t *current, *tmp;
 	size_t count = 0;
 
 	while (*h)
