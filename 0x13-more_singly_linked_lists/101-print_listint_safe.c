@@ -3,7 +3,7 @@
 /**
  * print_listint_safe - prints nodes in linked list.
  *
- * @h: pointer to the first list.
+ * @head: pointer to the first list.
  *
  * Return: number of nodes in the list.
  */
