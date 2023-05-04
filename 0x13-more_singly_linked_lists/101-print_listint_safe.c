@@ -29,10 +29,13 @@ size_t print_listint_safe(const listint_t *h)
 		}
 		curr = curr->next;
 
-	}
+		if (cnt % 2 == 0 && cnt > 2 && curr == h)
+		{
+			printf("-> [%p] %d\n", (void *)curr, curr->n);
+			return (cnt);
+		}
 
-	if (h == NULL)
-		return (0);
+	}
 
 	return (cnt);
 }
