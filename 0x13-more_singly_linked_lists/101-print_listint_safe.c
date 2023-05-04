@@ -15,7 +15,7 @@ size_t print_listint_safe(const listint_t *h)
 	size_t cnt;
 
 	if (h == NULL)
-		exit(98);
+		return (0);
 
 	cnt = 0;
 	curr = h;
