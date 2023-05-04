@@ -14,22 +14,19 @@ size_t free_listint_safe(listint_t **h)
 	listint_t *current, *new;
 	size_t count = 0;
 
-	current = *h;
-
-	while (current)
+	while (*h)
 	{
 		count++;
-		new = current->next;
 
-		if (current < new)
+		if (*h < (*h)->next)
 		{
-			free(current);
-			current = NULL;
+			free(*h);
+			*h = NULL;
 		}
 		else
 		{
-			tmp = current;
-			current = new;
+			tmp = *h;
+			*h = (*h)->next;
 			free(tmp);
 
 		}
