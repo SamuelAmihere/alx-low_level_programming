@@ -14,8 +14,8 @@ size_t free_listint_safe(listint_t **h)
 	listint_t *current, *new;
 	size_t count = 0;
 
-	if (!h && !*h)
-		return (0);
+	if (!(h && *h))
+		return (count);
 
 	current = *h;
 
@@ -37,7 +37,7 @@ size_t free_listint_safe(listint_t **h)
 
 		}
 	}
-	current = NULL;
+	*head = NULL;
 
 	return (count);
 }
