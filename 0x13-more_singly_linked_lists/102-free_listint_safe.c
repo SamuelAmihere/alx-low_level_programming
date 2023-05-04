@@ -23,15 +23,21 @@ size_t free_listint_safe(listint_t **h)
 	{
 		count++;
 		new = current->next;
-		free(current);
-		current = new;
 
-		if (current >= new)
+		if (current < new)
 		{
-			*h = NULL;
-			break;
+			free(current);
+			current = NULL;
+		}
+		else
+		{
+			tmp = current
+			current = new;
+			free(tmp);
+
 		}
 	}
+	current = NULL;
 
 	return (count);
 }
