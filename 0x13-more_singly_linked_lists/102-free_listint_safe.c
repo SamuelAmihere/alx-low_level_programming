@@ -14,7 +14,7 @@ size_t free_listint_safe(listint_t **h)
 	listint_t *curr = NULL, *tmp = NULL;
 	size_t count = 0;
 
-	if (!h || !*h)
+	if (!(h && *h))
 		return (count);
 
 	curr = *h
