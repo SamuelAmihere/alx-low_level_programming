@@ -27,6 +27,6 @@ void print_binary(unsigned long int n)
 		total_bits--;
 	}
 
-	if (count == NULL)
+	if (!count)
 		_putchar('0');
 }
