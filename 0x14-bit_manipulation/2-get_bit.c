@@ -11,10 +11,8 @@
  */
 int get_bit(unsigned long int n, unsigned int index)
 {
-	int i = 0;
-	int *ptr = get_binary(n);
-
 	if (index >= U_BITS(sizeof(unsigned long int)))
 		return (-1);
+
 	return ((n >> index) & 1);
 }
