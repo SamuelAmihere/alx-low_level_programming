@@ -1,6 +1,10 @@
 #ifndef _MAIN_H
 #define _MAIN_H
 
+/******** MACROS *******/
+#define U_BITS(bytes) (bytes * 8 - 1)
+
+
 int _putchar(char c);
 unsigned int binary_to_uint(const char *b);
 void print_binary(unsigned long int n);
