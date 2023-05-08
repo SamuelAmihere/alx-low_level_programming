@@ -22,7 +22,7 @@ int append_text_to_file(const char *filename, char *text_content)
 {
 	int fdisc, len, bytes_a;
 
-	fdisc = open(filename, O_WEONLY | O_APPEND);
+	fdisc = open(filename, O_WRONLY | O_APPEND);
 
 	if (!filename || fdisc == -1)
 		return (-1);
