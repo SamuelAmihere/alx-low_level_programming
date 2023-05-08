@@ -23,7 +23,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 	int bytes_w, bytes_r;
 
 	s = malloc(sizeof(char) * letters);
-	if (s == -1 || !filename)
+	if (!s || !filename)
 		return (0);
 
 	fdisc = open(filename, O_RDONLY);
