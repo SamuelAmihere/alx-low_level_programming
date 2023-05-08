@@ -30,9 +30,9 @@ int append_text_to_file(const char *filename, char *text_content)
 	if (text_content)
 	{
 		len = _strlen(text_content);
-		bytes_w = write(fdisc, text_content, len);
+		bytes_a = write(fdisc, text_content, len);
 
-		if (bytes_w != len)
+		if (bytes_a != len)
 		{
 			close(fdisc);
 			return (-1);
