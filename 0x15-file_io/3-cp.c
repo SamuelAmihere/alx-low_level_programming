@@ -101,7 +101,7 @@ void copy_file(char *sr, char *dst)
 	}
 
 	if (bytes_r < 0)
-		error(sr, 99);
+		error(sr, 98);
 
 	close_file(src);
 	close_file(dest);
