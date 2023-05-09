@@ -51,32 +51,6 @@ int open_file(char *filename, int flags, mode_t mode)
 	return (fdesc);
 }
 
-/**
- * copy_file - read from one file and write to another
- *
- * @src: source file
- * @dest: destination file
- *
- * Return: nothing
- */
-void copy_file(int src, int dest)
-{
-	char buffer[BUFFER_SIZE];
-	int bytes_r, bytes_w;
-
-	bytes_r = read(src, buffer, BUFFER_SIZE);
-
-	while (bytes_r > 0)
-	{
-		bytes_w = write(dest, buffer, bytes_r);
-		if (bytes_w < 0 || dest < 0)
-			error(dest, 99);
-	}
-
-	if (bytes_r < 0)
-		error(src, 98);
-}
-
 
 /**
  * close_file - close a file
@@ -87,14 +61,47 @@ void copy_file(int src, int dest)
  */
 void close_file(int fdesc)
 {
-	int fclose;
+        int fclose;
 
-	fclose = close(fdesc);
-	if (fclose == -1)
+        fclose = close(fdesc);
+        if (fclose == -1)
+        {
+                dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdesc);
+                exit(100);
+        }
+}
+
+/**
+ * copy_file - read from one file and write to another
+ *
+ * @sr: source file
+ * @dst: destination file
+ *
+ * Return: nothing
+ */
+void copy_file(char *sr, char *dst)
+{
+	char buffer[BUFFER_SIZE];
+	int bytes_r, bytes_w, src, dest;
+
+	src = open_file(sr, O_RDONLY, 0);
+	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC,
+			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+
+
+
+	while ((bytes_r = read(src, buffer, BUFFER_SIZE)) > 0)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdesc);
-		exit(100);
+		bytes_w = write(dest, buffer, bytes_r);
+		if (bytes_w < 0)
+			error(dst, 99);
 	}
+
+	if (bytes_r < 0)
+		error(sr, 98);
+
+	close_file(src);
+	close_file(dest);
 }
 
 
@@ -113,19 +120,15 @@ void close_file(int fdesc)
  */
 int main(int argc, char *argv[])
 {
-	int src, dest;
+	char *sr, *dst;
 
 	if (argc != 3)
 		error(argv[1], 97);
 
-	src = open_file(argv[1], O_RDONLY, 0);
-	dest = open_file(argv[2], O_WRONLY | O_CREAT | O_TRUNC,
-			S_IRUSR | S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
+	sr = argv[1];
+	dst = argv[2];
 
-	copy_file(src, dest);
-
-	close_file(src);
-	close_file(dest);
+	copy_file(sr, dst);
 
 	return (0);
 }
