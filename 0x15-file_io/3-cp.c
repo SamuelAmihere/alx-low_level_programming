@@ -84,24 +84,23 @@ void copy_file(char *sr, char *dst)
 	char buffer[BUFFER_SIZE];
 	int bytes_r, bytes_w, src, dest;
 
-	src = open_file(sr, O_RDONLY, 0);
-	if (src == -1)
+	src = open_file(sr, O_RDONLY);
+	if (src < 0)
 		error(sr, 98);
 
-	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC, S_IRUSR |
-			S_IWUSR | S_IRGRP | S_IWGRP | S_IROTH);
-	if (dest == -1)
+	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	if (dest < 0)
 		error(dst, 99);
 
 
 	while ((bytes_r = read(src, buffer, BUFFER_SIZE)) > 0)
 	{
 		bytes_w = write(dest, buffer, bytes_r);
-		if (bytes_w == -1)
+		if (bytes_w < 0)
 			error(dst, 99);
 	}
 
-	if (bytes_r == -1)
+	if (bytes_r < 0)
 		error(sr, 98);
 
 	close_file(src);
