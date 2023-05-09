@@ -10,8 +10,7 @@
 /**
  * error - print an error message and exit with a given error code
  *
- * @message: error message to output
- *
+ * @file: file being processed
  * @code: exit code
  *
  * Return: nothing
