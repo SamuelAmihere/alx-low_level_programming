@@ -16,9 +16,18 @@
  *
  * Return: nothing
  */
-void error(char *message, int code)
+void error(char __attribute__((unused))*file, int code)
 {
-	dprintf(STDERR_FILENO, "Error: %s\n", message);
+	if (code == 98)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't read from file %s\n",
+				file);
+	}
+	else if (code == 99)
+		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
+	else if (code == 97)
+		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+
 	exit(code);
 }
 
@@ -38,7 +47,7 @@ int open_file(char *filename, int flags, mode_t mode)
 	fdesc = open(filename, flags, mode);
 	if (fdesc < 0)
 	{
-		error(strerror(errno), 98);
+		error(filename, 98);
 	}
 	return (fdesc);
 }
@@ -77,8 +86,14 @@ void copy_file(int src, int dest)
  */
 void close_file(int fdesc)
 {
-	if (close(fdesc))
-		error(strerror(errno), 100);
+	int fclose;
+
+	fclose = close(fdesc);
+	if (fclose == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
+		exit(100);
+	}
 }
 
 
@@ -100,7 +115,7 @@ int main(int argc, char *argv[])
 	int src, dest;
 
 	if (argc != 3)
-		error("Usage: cp file_from file_to", 97);
+		error(argv[1], 97);
 
 	src = open_file(argv[1], O_RDONLY, 0);
 	dest = open_file(argv[2], O_WRONLY | O_CREAT | O_TRUNC,
