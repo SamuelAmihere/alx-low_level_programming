@@ -84,7 +84,7 @@ void copy_file(char *sr, char *dst)
 	char buffer[BUFFER_SIZE];
 	int bytes_r, bytes_w, src, dest;
 
-	src = open(sr, O_RDONLY);
+	src = open_file(sr, O_RDONLY, 0);
 	if (src < 0)
 		error(sr, 98);
 
