@@ -1,9 +1,9 @@
-#include <stdlib.h>
 #include <stdio.h>
-#include <fcntl.h>
+#include <stdlib.h>
 #include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
+#include <fcntl.h>
+#include <errno.h>
+#include <string.h>
 
 #define BUFFER_SIZE 1024
 
@@ -77,7 +77,7 @@ void copy_file(int src, int dest)
  */
 void close_file(int fdesc)
 {
-	if (close(fdesc)
+	if (close(fdesc))
 		error(strerror(errno), 100);
 }
 
