@@ -61,14 +61,14 @@ int open_file(char *filename, int flags, mode_t mode)
  */
 void close_file(int fdesc)
 {
-        int fclose;
+	int fclose;
 
-        fclose = close(fdesc);
-        if (fclose == -1)
-        {
-                dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdesc);
-                exit(100);
-        }
+	fclose = close(fdesc);
+	if (fclose == -1)
+	{
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdesc);
+		exit(100);
+	}
 }
 
 /**
