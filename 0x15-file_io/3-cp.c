@@ -96,7 +96,7 @@ void copy_file(char *sr, char *dst)
 	while ((bytes_r = read(src, buffer, BUFFER_SIZE)) > 0)
 	{
 		bytes_w = write(dest, buffer, bytes_r);
-		if (bytes_w < 0)
+		if (bytes_w < 0 || bytes_w != bytes_r)
 			error(dst, 99);
 	}
 
