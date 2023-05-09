@@ -62,12 +62,14 @@ int open_file(char *filename, int flags, mode_t mode)
 void copy_file(int src, int dest)
 {
 	char buffer[BUFFER_SIZE];
-	ssize_t bytes_r, bytes_w;
+	int bytes_r, bytes_w;
 
-	while ((bytes_r = read(src, buffer, BUFFER_SIZE)) > 0)
+	bytes_r = read(src, buffer, BUFFER_SIZE);
+
+	while (bytes_r > 0)
 	{
 		bytes_w = write(dest, buffer, bytes_r);
-		if (bytes_w < 0)
+		if (bytes_w < 0 || dest < 0)
 			error(strerror(errno), 99);
 	}
 
