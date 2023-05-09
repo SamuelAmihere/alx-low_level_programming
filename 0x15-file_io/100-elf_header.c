@@ -17,91 +17,96 @@ void display_error(char *msg)
 	exit(98);
 }
 
-/**
- * read_elf_header - read ELF header information into a struct
- *
- * @fdesc: file descriptor
- * @elf_header: ELF header information
- *
- * Return: nothing
- */
-void read_elf_header(int fdesc, Elf64_Ehdr *elf_header)
-{
-	if (read(fdesc, elf_header, sizeof(Elf64_Ehdr)) !=
-			sizeof(Elf64_Ehdr))
-		display_error("Error reading ELF header");
-}
-
-/**
- * display_elf_header_info - display the ELF header information
- *
- * @elf_header: elf header pointer
- *
- * Return: nothing
- */
-void display_elf_header_info(Elf64_Ehdr *elf_header)
-{
-	printf("  Magic:   ");
-	for (int i = 0; i < EI_NIDENT; i++)
-	{
-		printf("%02x ", elf_header->e_ident[i]);
-	}
-
-	printf("\n");
-
-	printf("  Class:                             %s\n",
-			elf_header->e_ident[EI_CLASS] == ELFCLASS64 ?
-			"ELF64" : "Unknown");
-	printf("  Data:                              %s\n",
-			elf_header->e_ident[EI_DATA] == ELFDATA2LSB ?
-			"2's complement, little endian" : "Unknown");
-	printf("  Version:                           %d (current)\n",
-			elf_header->e_ident[EI_VERSION]);
-	printf("  OS/ABI:                            %d\n",
-			elf_header->e_ident[EI_OSABI]);
-	printf("  ABI Version:                       %d\n",
-			elf_header->e_ident[EI_ABIVERSION]);
-	printf("  Type:                              %d\n",
-			elf_header->e_type);
-	printf("  Entry point address:               0x%lx\n",
-			elf_header->e_entry);
-}
-
-/**
- * main - entry point
- *
- * @argc: number of arguments
- * @argv: arguments
- *
- * Return: 0 on Success
- */
-int main(int argc, char *argv[])
+int open_file(const char* filename)
 {
 	int fdesc;
-	Elf64_Ehdr elf_header;
 
-	if (argc != 2)
-		display_error("Usage: elf_header elf_filename");
-
-	fdesc = open(argv[1], O_RDONLY);
+	fdesc = open(filename, O_RDONLY);
 	if (fdesc == -1)
-		display_error("Error opening file");
+		print_error("Failed to open file");
+	return (fdesc);
+}
 
-	read_elf_header(fdesc, &elf_header);
 
-	if (elf_header.e_ident[EI_MAG0] != ELFMAG0 ||
-			elf_header.e_ident[EI_MAG1] != ELFMAG1 ||
-			elf_header.e_ident[EI_MAG2] != ELFMAG2 ||
-			elf_header.e_ident[EI_MAG3] != ELFMAG3)
+ssize_t read_file(int fd, void* buf, size_t count)
+{
+	ssize_t n = read(fd, buf, count);
+
+	if (n == -1)
+		print_error("Failed to read file");
+	return (n);
+
+}
+
+Elf64_Ehdr* read_elf_header(const char* filename)
+{
+	int fdesc;
+	char buf[BUF_SIZE];
+	ssize_t n;
+	Elf64_Ehdr* ehdr;
+
+	fdesc = open_file(filename);
+	n = read_file(fdesc, buf, BUF_SIZE);
+
+	close(fdesc);
+	if (n < sizeof(Elf64_Ehdr))
+		print_error("File too small to contain ELF header");
+
+	ehdr = (Elf64_Ehdr*) buf;
+	if (ehdr->e_ident[EI_MAG0] != ELFMAG0 ||
+			ehdr->e_ident[EI_MAG1] != ELFMAG1 ||
+			ehdr->e_ident[EI_MAG2] != ELFMAG2 ||
+			ehdr->e_ident[EI_MAG3] != ELFMAG3)
+		print_error("Not an ELF file");
+
+	return (ehdr);
+
+}
+
+
+void print_magic(const Elf64_Ehdr* ehdr)
+{
+	printf("Magic:   ");
+	for (int i = 0; i < EI_NIDENT; i++)
+		printf("%02x ", ehdr->e_ident[i]);
+	printf("\n");
+}
+
+void print_class(const Elf64_Ehdr* ehdr)
+{
+	printf("Class:                             %s\n",
+			ehdr->e_ident[EI_CLASS] == ELFCLASS32 ?
+			"ELF32" : "ELF64");
+}
+
+
+void print_data(const Elf64_Ehdr* ehdr)
+{
+	printf("Data:                              %s\n",
+			ehdr->e_ident[EI_DATA] == ELFDATA2LSB 
+		       	"2's complement, little endian" :
+			"2's complement, big endian");
+}
+
+
+void print_version(const Elf64_Ehdr* ehdr)
+{
+	printf("Version:                           %d\n",
+			ehdr->e_ident[EI_VERSION]);
+}
+
+void print_osabi(const Elf64_Ehdr* ehdr)
+{
+	printf("OS/ABI:                            ");
+	switch (ehdr->e_ident[EI_OSABI])
 	{
-		display_error("Error: Not an ELF file");
+		case ELFOSABI_SYSV: 
+			printf("UNIX - System V\n");
+				    break;
+		case ELFOSABI_HPUX: printf("HP-UX\n");
+				    break;
+		case ELFOSABI_NETBSD: printf("NetBSD\n");
+				      break;
+
 	}
-
-	printf("ELF Header:\n");
-	display_elf_header_info(&elf_header);
-
-	if (close(fdesc) == -1)
-		display_error("Error closing file");
-
-	return (0);
 }
