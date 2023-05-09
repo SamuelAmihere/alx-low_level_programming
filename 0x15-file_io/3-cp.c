@@ -70,11 +70,11 @@ void copy_file(int src, int dest)
 	{
 		bytes_w = write(dest, buffer, bytes_r);
 		if (bytes_w < 0 || dest < 0)
-			error(strerror(errno), 99);
+			error(dest, 99);
 	}
 
 	if (bytes_r < 0)
-		error(strerror(errno), 98);
+		error(src, 98);
 }
 
 
