@@ -101,6 +101,8 @@ void copy_file(char *sr, char *dst)
 		bytes_w = write(dest, buffer, bytes_r);
 		if (bytes_w < 0 || bytes_w != bytes_r)
 			error(dst, 99);
+		if (bytes_r < 0)
+			error(sr, 98);
 	}
 
 	close_file(src);
