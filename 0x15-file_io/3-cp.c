@@ -91,7 +91,7 @@ void copy_file(char *sr, char *dst)
 	if (src == -1)
 		error(sr, 98);
 
-	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC, | S_IRGRP | S_IWUSR | S_IROTH);
 	if (dest == -1)
 		error(dst, 99);
 
@@ -102,9 +102,6 @@ void copy_file(char *sr, char *dst)
 		if (bytes_w < 0 || bytes_w != bytes_r)
 			error(dst, 99);
 	}
-
-	if (bytes_r < 0)
-		error(sr, 98);
 
 	close_file(src);
 	close_file(dest);
