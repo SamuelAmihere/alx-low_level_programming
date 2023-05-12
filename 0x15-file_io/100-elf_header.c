@@ -4,6 +4,8 @@
 #include <fcntl.h>
 #include <elf.h>
 
+#define BUF_SIZE 1024
+
 /**
  * display_error - display error message and exit
  *
@@ -31,7 +33,7 @@ int open_file(const char *filename)
 
 	fdesc = open(filename, O_RDONLY);
 	if (fdesc == -1)
-		print_error("Failed to open file");
+		printf("Failed to open file");
 	return (fdesc);
 }
 
@@ -49,7 +51,7 @@ ssize_t read_file(int fdesc, void *buf, size_t count)
 	ssize_t n = read(fdesc, buf, count);
 
 	if (n == -1)
-		print_error("Failed to read file");
+		printf("Failed to read file");
 	return (n);
 
 }
@@ -72,14 +74,14 @@ Elf64_Ehdr *read_elf_header(const char *filename)
 
 	close(fdesc);
 	if (n < sizeof(Elf64_Ehdr))
-		print_error("File too small to contain ELF header");
+		printf("File too small to contain ELF header");
 
 	ehdr = (Elf64_Ehdr *) buf;
 	if (ehdr->e_ident[EI_MAG0] != ELFMAG0 ||
 			ehdr->e_ident[EI_MAG1] != ELFMAG1 ||
 			ehdr->e_ident[EI_MAG2] != ELFMAG2 ||
 			ehdr->e_ident[EI_MAG3] != ELFMAG3)
-		print_error("Not an ELF file");
+		printf("Not an ELF file");
 
 	return (ehdr);
 
@@ -123,7 +125,7 @@ void print_class(const Elf64_Ehdr *ehdr)
 void print_data(const Elf64_Ehdr *ehdr)
 {
 	printf("Data:					%s\n",
-			ehdr->e_ident[EI_DATA] == ELFDATA2LSB
+			ehdr->e_ident[EI_DATA] == ELFDATA2LSB ?
 			"2's complement, little endian" :
 			"2's complement, big endian");
 }
@@ -243,7 +245,7 @@ void print_type(const Elf64_Ehdr *ehdr)
  *
  * @ehdr: a pointer to an Elf64_Ehdr structure
  *
- * Retturn: nothing
+ * Return: nothing
  */
 void print_entry_point(const Elf64_Ehdr *ehdr)
 {
@@ -261,7 +263,7 @@ void print_entry_point(const Elf64_Ehdr *ehdr)
 int main(int argc, char **argv)
 {
 	if (argc != 2)
-		print_error("Usage: elf_header elf_filename");
+		printf("Usage: elf_header elf_filename");
 	const char *filename = argv[1];
 	Elf64_Ehdr *ehdr = read_elf_header(filename);
 
