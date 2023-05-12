@@ -85,7 +85,7 @@ void close_file(int fdesc)
 void copy_file(char *sr, char *dst)
 {
 	char buffer[BUFFER_SIZE];
-	int bytes_r, bytes_w, src, dest;
+	int bytes_r = BUFFER_SIZE, bytes_w, src, dest;
 
 	src = open_file(sr, O_RDONLY, 0);
 	if (src == -1)
@@ -106,6 +106,7 @@ void copy_file(char *sr, char *dst)
 		if (bytes_w < 0)
 			error(dst, 99);
 	}
+
 
 	close_file(src);
 	close_file(dest);
