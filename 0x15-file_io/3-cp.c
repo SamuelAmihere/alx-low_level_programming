@@ -25,7 +25,7 @@ void error(char *file, int code)
 	else if (code == 99)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
 	else if (code == 97)
-		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n",file);
+		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n", file);
 
 	exit(code);
 }
