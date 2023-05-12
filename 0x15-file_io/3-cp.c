@@ -43,7 +43,10 @@ int open_file(char *filename, int flags, mode_t mode)
 {
 	int fdesc;
 
-	fdesc = open(filename, flags, mode);
+	if (mode == 0)
+		fdesc = open(filename, flags);
+	else
+		fdesc = open(filename, flags, mode);
 	if (fdesc == -1)
 	{
 		error(filename, 98);
@@ -85,11 +88,11 @@ void copy_file(char *sr, char *dst)
 	int bytes_r, bytes_w, src, dest;
 
 	src = open_file(sr, O_RDONLY, 0);
-	if (src < 0)
+	if (src == -1)
 		error(sr, 98);
 
 	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC, 0664);
-	if (dest < 0)
+	if (dest == -1)
 		error(dst, 99);
 
 
