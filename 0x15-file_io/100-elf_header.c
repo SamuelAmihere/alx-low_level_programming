@@ -33,7 +33,7 @@ int open_file(const char *filename)
 
 	fdesc = open(filename, O_RDONLY);
 	if (fdesc == -1)
-		printf("Failed to open file");
+		display_error("Could not open file\n");
 	return (fdesc);
 }
 
@@ -51,7 +51,7 @@ ssize_t read_file(int fdesc, void *buf, size_t count)
 	ssize_t n = read(fdesc, buf, count);
 
 	if (n == -1)
-		printf("Failed to read file");
+		display_error("Could not read from file\n");
 	return (n);
 
 }
@@ -74,14 +74,14 @@ Elf64_Ehdr *read_elf_header(const char *filename)
 
 	close(fdesc);
 	if (n < sizeof(Elf64_Ehdr))
-		printf("File too small to contain ELF header");
+		display_error("Could not read from file\n");
 
 	ehdr = (Elf64_Ehdr *) buf;
 	if (ehdr->e_ident[EI_MAG0] != ELFMAG0 ||
 			ehdr->e_ident[EI_MAG1] != ELFMAG1 ||
 			ehdr->e_ident[EI_MAG2] != ELFMAG2 ||
 			ehdr->e_ident[EI_MAG3] != ELFMAG3)
-		printf("Not an ELF file");
+		display_error("Not an ELF file!\n");
 
 	return (ehdr);
 
@@ -258,7 +258,7 @@ void print_entry_point(const Elf64_Ehdr *ehdr)
  * @argc: number of args
  * @argv: args
  *
- * Return: 0on Success
+ * Return: 0 on Success
  */
 int main(int argc, char **argv)
 {
