@@ -91,7 +91,7 @@ void copy_file(char *sr, char *dst)
 	if (src == -1)
 		error(sr, 98);
 
-	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC, | S_IRGRP | S_IWUSR | S_IROTH);
+	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC, 0664);
 	if (dest == -1)
 		error(dst, 99);
 
