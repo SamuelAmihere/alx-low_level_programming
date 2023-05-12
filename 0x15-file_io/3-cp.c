@@ -15,7 +15,7 @@
  *
  * Return: nothing
  */
-void error(char __attribute__((unused))*file, int code)
+void error(char *file, int code)
 {
 	if (code == 98)
 	{
@@ -25,7 +25,7 @@ void error(char __attribute__((unused))*file, int code)
 	else if (code == 99)
 		dprintf(STDERR_FILENO, "Error: Can't write to %s\n", file);
 	else if (code == 97)
-		dprintf(STDERR_FILENO, "Usage: cp file_from file_to\n");
+		dprintf(STDERR_FILENO, "Usage: %s file_from file_to\n",file);
 
 	exit(code);
 }
@@ -44,7 +44,7 @@ int open_file(char *filename, int flags, mode_t mode)
 	int fdesc;
 
 	fdesc = open(filename, flags, mode);
-	if (fdesc < 0)
+	if (fdesc == -1)
 	{
 		error(filename, 98);
 	}
@@ -126,7 +126,7 @@ int main(int argc, char *argv[])
 	char *sr, *dst;
 
 	if (argc != 3)
-		error(argv[1], 97);
+		error("cp", 97);
 
 	sr = argv[1];
 	dst = argv[2];
