@@ -47,10 +47,6 @@ int open_file(char *filename, int flags, mode_t mode)
 		fdesc = open(filename, flags);
 	else
 		fdesc = open(filename, flags, mode);
-	if (fdesc == -1)
-	{
-		error(filename, 98);
-	}
 	return (fdesc);
 }
 
@@ -91,7 +87,7 @@ void copy_file(char *sr, char *dst)
 	if (src == -1)
 		error(sr, 98);
 
-	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC, 0664);
+	dest = open_file(dst, O_WRONLY | O_CREAT | O_TRUNC | O_APPEND, 0664);
 	if (dest == -1)
 		error(dst, 99);
 
@@ -99,11 +95,11 @@ void copy_file(char *sr, char *dst)
 	while (bytes_r == BUFFER_SIZE)
 	{
 		bytes_r = read(src, buffer, BUFFER_SIZE);
-		if (bytes_r < 0)
+		if (bytes_r == -1)
 			error(sr, 98);
 
 		bytes_w = write(dest, buffer, bytes_r);
-		if (bytes_w < 0)
+		if (bytes_w == -1)
 			error(dst, 99);
 	}
 
