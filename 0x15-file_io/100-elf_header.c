@@ -95,8 +95,10 @@ Elf64_Ehdr *read_elf_header(const char *filename)
  */
 void print_magic(const Elf64_Ehdr *ehdr)
 {
-	printf("Magic:   ");
-	for (int i = 0; i < EI_NIDENT; i++)
+	int i;
+
+	printf(" Magic:   ");
+	for (i = 0; i < EI_NIDENT; i++)
 		printf("%02x ", ehdr->e_ident[i]);
 	printf("\n");
 }
@@ -262,10 +264,12 @@ void print_entry_point(const Elf64_Ehdr *ehdr)
  */
 int main(int argc, char **argv)
 {
+	const char *filename;
+
 	if (argc != 2)
 		printf("Usage: elf_header elf_filename");
-	const char *filename = argv[1];
-	Elf64_Ehdr *ehdr = read_elf_header(filename);
+	filename = argv[1];
+	f64_Ehdr *ehdr = read_elf_header(filename);
 
 	print_magic(ehdr);
 	print_class(ehdr);
