@@ -301,11 +301,6 @@ int main(int argc, char **argv)
 				sr);
 	}
 
-
-
-	if (argc != 2)
-		printf("Usage: elf_header elf_filename\n");
-
 	ehdr = elf_header->e_ident;
 
 	inspect_elf(ehdr);
