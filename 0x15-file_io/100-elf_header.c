@@ -279,11 +279,11 @@ int main(int argc, char **argv)
 	char *err_msg = "Can't read file";
 	unsigned char *ehdr;
 
-	src = open_file(argv[1], O_RDONLY, 0);
+	src = open_file(sr, O_RDONLY, 0);
 	if (src < 0)
 		display_error(err_msg, sr, 98);
 
-	elf_header = (Elf64_Ehdr *) malloc(sizeof(Elf64_Ehdr));
+	elf_header = malloc(sizeof(Elf64_Ehdr));
 	if (!elf_header)
 	{
 		close_file(src);
@@ -307,9 +307,8 @@ int main(int argc, char **argv)
 
 	inspect_elf(ehdr);
 
-	inspect_elf(ehdr);
-
 	printf("ELF Header:\n");
+
 	print_magic(ehdr);
 	print_class(ehdr);
 	print_data(ehdr);
@@ -317,5 +316,8 @@ int main(int argc, char **argv)
 	print_os(ehdr);
 	print_abi_version(ehdr);
 	print_entry_point(ehdr);
+
+	free(elf_header);
+	close_file(src);
 	return (0);
 }
