@@ -258,7 +258,8 @@ void close_file(int fdesc)
 	fclose = close(fdesc);
 	if (fclose == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fdesc);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n",
+				fdesc);
 		exit(98);
 	}
 }
@@ -296,8 +297,8 @@ int main(int argc, char **argv)
 	{
 		free(elf_header);
 		close_file(src);
-		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n", argv[1]);
-		exit(98);
+		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n",
+				sr);
 	}
 
 
