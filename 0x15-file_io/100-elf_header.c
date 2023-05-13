@@ -57,7 +57,7 @@ void print_magic(unsigned char *ehdr)
 
 	printf(" Magic:   ");
 	for (i = 0; i < EI_NIDENT; i++)
-		printf("%02x ", ehdr->e_ident[i]);
+		printf("%02x ", ehdr[i]);
 	if (i != EI_NIDENT - 1)
 		printf(" ");
 	else
@@ -102,7 +102,7 @@ void print_class(unsigned char *ehdr)
 {
 	printf("Class:                             ");
 
-	switch (e_ident[EI_CLASS])
+	switch (ehdr[EI_CLASS])
 	{
 		case ELFCLASS64:
 			printf("ELF64");
@@ -272,17 +272,17 @@ void close_file(int fdesc)
  */
 int main(int argc, char **argv)
 {
-	ELf64_Ehdr *elf_header;
+	Elf64_Ehdr *elf_header;
 	int src, bytes_r;
 	char *sr = argv[1];
 	char *err_msg = "Can't read file";
-	unsigned char *ehdr = header->e_ident;
+	unsigned char *ehdr;
 
 	src = open_file(argv[1], O_RDONLY, 0);
 	if (src < 0)
 		display_error(err_msg, sr, 98);
 
-	elf_header = (ELf64 *) malloc(sizeof(Elf64_Ehdr));
+	elf_header = (Elf64_Ehdr *) malloc(sizeof(Elf64_Ehdr));
 	if (!elf_header)
 	{
 		close_file(src);
@@ -306,11 +306,13 @@ int main(int argc, char **argv)
 
 	inspect_elf(ehdr);
 
+	inspect_elf(ehdr);
+
 	printf("ELF Header:\n");
 	print_magic(ehdr);
 	print_class(ehdr);
 	print_data(ehdr);
-	print_version(ehdr);
+	print_vers(ehdr);
 	print_os(ehdr);
 	print_abi_version(ehdr);
 	print_entry_point(ehdr);
