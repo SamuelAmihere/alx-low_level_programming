@@ -41,6 +41,7 @@ void inspect_elf(unsigned char *elf_magic)
 				elf_magic[i] != 'E' &&
 				elf_magic[i] != 'L')
 			display_error("Not an ELF file", "", 98);
+		i++;
 	}
 }
 
