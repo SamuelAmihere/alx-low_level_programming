@@ -305,6 +305,8 @@ int main(int argc, char **argv)
 	if (argc != 2)
 		printf("Usage: elf_header elf_filename");
 
+	ehdr = elf_header->e_ident;
+
 	inspect_elf(ehdr);
 
 	printf("ELF Header:\n");
