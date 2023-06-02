@@ -60,10 +60,10 @@ void print_magic(unsigned char *ehdr)
 	for (i = 0; i < EI_NIDENT; i++)
 	{
 		printf("%02x ", ehdr[i]);
-		if (i != EI_NIDENT - 1)
-			printf(" ");
-		else
+		if (i == EI_NIDENT - 1)
 			printf("\n");
+		else
+			printf(" ");
 	}
 }
 
