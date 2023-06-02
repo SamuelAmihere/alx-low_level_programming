@@ -101,7 +101,7 @@ void print_data(unsigned char *ehdr)
  * @type: typeof ELF
  * Return: Nothing
  */
-void print_elftype(ehdr, type)
+void print_elftype(unsigned char *ehdr, unsigned int type)
 {
 	if (ehdr[EI_DATA] == ELFDATA2MSB)
 		type = type >> 8;
@@ -341,7 +341,7 @@ int main(int argc, char **argv)
 		printf("Usage: elf_header elf_filename");
 
 	ehdr = elf_header->e_ident;
-	type = header->e_type;
+	type = elf_header->e_type;
 
 	inspect_elf(ehdr);
 
