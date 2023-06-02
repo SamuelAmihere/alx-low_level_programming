@@ -315,6 +315,7 @@ int main(int argc, char **argv)
 	char *err_msg = "Can't read file";
 	unsigned char *ehdr;
 	unsigned int entry;
+	unsigned int type;
 
 	src = open_file(sr, O_RDONLY, 0);
 	if (src < 0)
@@ -342,6 +343,7 @@ int main(int argc, char **argv)
 
 	ehdr = elf_header->e_ident;
 	entry = header->e_entry;
+	type = header->e_type;
 
 	inspect_elf(ehdr);
 
