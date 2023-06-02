@@ -348,6 +348,7 @@ int main(int argc, char **argv)
 		close_file(src);
 		dprintf(STDERR_FILENO, "Error: `%s`: No such file\n",
 				sr);
+		exit(98);
 	}
 
 	if (argc != 2)
