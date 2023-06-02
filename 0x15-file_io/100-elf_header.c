@@ -25,21 +25,21 @@ void display_error(char *msg, char *file, int code)
 /**
  * inspect_elf - Verifies if a file is an ELF header file.
  *
- * @elf_magic: A pointer to elf  magic numbers.
+ * @ehdr: A pointer to elf  magic numbers.
  *
  * Returns: Nothing - exit code 98.
  */
-void inspect_elf(unsigned char *elf_magic)
+void inspect_elf(unsigned char *ehdr)
 {
 	int i;
 
 	i = 0;
 	while (i < 4)
 	{
-		if (elf_magic[i] != 127 &&
-				elf_magic[i] != 'F' &&
-				elf_magic[i] != 'E' &&
-				elf_magic[i] != 'L')
+		if (ehdr[i] != 127 &&
+				ehdr[i] != 'F' &&
+				ehdr[i] != 'E' &&
+				ehdr[i] != 'L')
 			display_error("Not an ELF file", "", 98);
 		i++;
 	}
@@ -264,12 +264,7 @@ void print_entry_point(unsigned char *ehdr, unsigned long int entry)
 		entry = ((entry << 8) & 0xFF00FF00) | ((entry >> 8) & 0xFF00FF);
 		entry = (entry << 16) | (entry << 16);
 	}
-
-	if (ehdr[EI_DATA] == ELFCLASS32)
-	{
-		printf("%#x\n", (unsigned int)entry);
-	} else
-		printf("%#lx\n", entry);
+	printf("%#lx\n", entry);
 }
 
 /**
