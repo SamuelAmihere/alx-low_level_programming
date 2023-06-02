@@ -125,7 +125,7 @@ void print_elftype(unsigned char *ehdr, unsigned long int type)
 			printf("NONE (None)");
 			break;
 		default:
-			printf("<unknown: %x>",(unsigned int)type);
+			printf("<unknown: %x>", (unsigned int)type);
 	}
 	printf("\n");
 }
@@ -197,44 +197,39 @@ void print_os(unsigned char *ehdr)
 	switch (ehdr[EI_OSABI])
 	{
 		case ELFOSABI_SYSV:
-			printf("UNIX - System V");
+			printf("UNIX - System V\n");
 			break;
 		case ELFOSABI_NETBSD:
-			printf("UNIX - NetBSD");
+			printf("UNIX - NetBSD\n");
 			break;
 		case ELFOSABI_HPUX:
-			printf("UNIX - HP-UX");
+			printf("UNIX - HP-UX\n");
 			break;
 		case ELFOSABI_LINUX:
-			printf("UNIX - Linux");
+			printf("UNIX - Linu\nx");
 			break;
 		case ELFOSABI_TRU64:
-			printf("UNIX - TRU64");
+			printf("UNIX - TRU64\n");
 			break;
 		case ELFOSABI_ARM:
-			printf("ARM");
+			printf("ARM\n");
 			break;
 		case ELFOSABI_SOLARIS:
-			printf("UNIX - Solaris");
-			break;
-		case ELFOSABI_AIX:
-			printf("UNIX - AIX");
+			printf("UNIX - Solaris\n");
 			break;
 		case ELFOSABI_IRIX:
-			printf("UNIX - IRIX");
+			printf("UNIX - IRIX\n");
 			break;
 		case ELFOSABI_FREEBSD:
-			printf("UNIX - FreeBSD");
+			printf("UNIX - FreeBSD\n");
 			break;
 		case ELFOSABI_STANDALONE:
-			printf("Standalone app");
+			printf("Standalone app\n");
 			break;
 		default:
-			printf("<unknown: %x>", ehdr[EI_OSABI]);
+			printf("<unknown: %x>\n", ehdr[EI_OSABI]);
 			break;
-
 	}
-	printf("\n");
 }
 
 /**
