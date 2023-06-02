@@ -314,7 +314,6 @@ int main(int argc, char **argv)
 	char *sr = argv[1];
 	char *err_msg = "Can't read file";
 	unsigned char *ehdr;
-	unsigned int entry;
 	unsigned int type;
 
 	src = open_file(sr, O_RDONLY, 0);
@@ -342,7 +341,6 @@ int main(int argc, char **argv)
 		printf("Usage: elf_header elf_filename");
 
 	ehdr = elf_header->e_ident;
-	entry = header->e_entry;
 	type = header->e_type;
 
 	inspect_elf(ehdr);
@@ -356,7 +354,7 @@ int main(int argc, char **argv)
 	print_os(ehdr);
 	print_abi_version(ehdr);
 	print_elftype(ehdr, type);
-	print_entry_point(ehdr, entry);
+	print_entry_point(ehdr);
 
 	free(elf_header);
 	close_file(src);
