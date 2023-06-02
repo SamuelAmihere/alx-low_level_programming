@@ -261,8 +261,8 @@ void print_entry_point(unsigned char *ehdr, unsigned long int entry)
 
 	if (ehdr[EI_DATA] == ELFDATA2MSB)
 	{
-		entry = ((entry << 8) & 0xFF00FF00) | ((entry >> 8) &
-				0xFF00FF);
+		entry = ((entry << 8) & 0xFF00FF00) |
+			((entry >> 8) & 0xFF00FF);
 		entry = (entry << 16) | (entry >> 16);
 	}
 	if (ehdr[EI_CLASS] != ELFCLASS32)
@@ -327,6 +327,7 @@ int main(int argc, char **argv)
 	char *err_msg = "Can't read file";
 	unsigned char *ehdr;
 	unsigned long int type;
+	unsigned long int entry;
 
 	src = open_file(sr, O_RDONLY, 0);
 	if (src < 0)
@@ -354,6 +355,7 @@ int main(int argc, char **argv)
 
 	ehdr = elf_header->e_ident;
 	type = elf_header->e_type;
+	entry = elf_header->e_entry;
 
 	inspect_elf(ehdr);
 
@@ -366,7 +368,7 @@ int main(int argc, char **argv)
 	print_os(ehdr);
 	print_abi_version(ehdr);
 	print_elftype(ehdr, type);
-	print_entry_point(ehdr, type);
+	print_entry_point(ehdr, entry);
 
 	free(elf_header);
 	close_file(src);
