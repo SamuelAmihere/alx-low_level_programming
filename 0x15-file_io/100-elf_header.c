@@ -191,44 +191,44 @@ void print_vers(unsigned char *ehdr)
  */
 void print_os(unsigned char *ehdr)
 {
-	printf("OS/ABI:                            ");
+	printf("  OS/ABI:                            ");
 	switch (ehdr[EI_OSABI])
 	{
 		case ELFOSABI_SYSV:
 			printf("UNIX - System V");
 			break;
 		case ELFOSABI_NETBSD:
-			printf("NetBSD");
+			printf("UNIX - NetBSD");
 			break;
 		case ELFOSABI_HPUX:
-			printf("HP-UX");
+			printf("UNIX - HP-UX");
 			break;
 		case ELFOSABI_LINUX:
-			printf("Linux");
+			printf("UNIX - Linux");
 			break;
 		case ELFOSABI_TRU64:
-			printf("Compaq TRU64 UNIX");
+			printf("UNIX - TRU64");
 			break;
 		case ELFOSABI_ARM:
 			printf("ARM");
 			break;
 		case ELFOSABI_SOLARIS:
-			printf("Solaris");
+			printf("UNIX - Solaris");
 			break;
 		case ELFOSABI_AIX:
-			printf("AIX");
+			printf("UNIX - AIX");
 			break;
 		case ELFOSABI_IRIX:
-			printf("IRIX");
+			printf("UNIX - IRIX");
 			break;
 		case ELFOSABI_FREEBSD:
-			printf("FreeBSD");
+			printf("UNIX - FreeBSD");
 			break;
 		case ELFOSABI_STANDALONE:
-			printf("Standalone (embedded) application");
+			printf("Standalone app");
 			break;
 		default:
-			printf("<unknown>");
+			printf("<unknown: %x>", ehdr[EI_OSABI]);
 			break;
 
 	}
