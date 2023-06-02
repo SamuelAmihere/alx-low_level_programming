@@ -349,8 +349,8 @@ int main(int __attribute__((__unused__)) argc, char **argv)
 	print_data(elf_header->e_ident);
 	print_vers(elf_header->e_ident);
 	print_os(elf_header->e_ident);
-	print_abi_version(elf_header->ident);
-	print_elftype(elf_header->e_ident, elf_header->type);
+	print_abi_version(elf_header->e_ident);
+	print_elftype(elf_header->e_ident, elf_header->e_type);
 	print_entry_point(elf_header->e_ident, elf_header->e_entry);
 
 	free(elf_header);
