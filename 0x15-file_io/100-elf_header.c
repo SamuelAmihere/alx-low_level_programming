@@ -108,18 +108,17 @@ void print_class(unsigned char *ehdr)
 	switch (ehdr[EI_CLASS])
 	{
 		case ELFCLASS64:
-			printf("ELF64");
+			printf("ELF64\n");
 			break;
 		case ELFCLASS32:
-			printf("ELF32");
+			printf("ELF32\n");
 			break;
 		case ELFCLASSNONE:
-			printf("none");
+			printf("none\n");
 			break;
 		default:
-			printf("<unknown: %x>", ehdr[EI_CLASS]);
+			printf("<unknown: %x>\n", ehdr[EI_CLASS]);
 	}
-	printf("\n");
 }
 
 
