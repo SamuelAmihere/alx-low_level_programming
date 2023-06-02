@@ -320,25 +320,18 @@ int main(int __attribute__((__unused__)) argc, char **argv)
 {
 	Elf64_Ehdr *elf_header;
 	int src, bytes_r;
-	char *sr = argv[1];
-	char *err_msg = "Can't read file";
-	unsigned char *ehdr;
-	unsigned long int type;
-	unsigned long int entry;
+	char *sr = argv[1], *err_msg = "Can't read file";
 
 	src = open_file(sr, O_RDONLY, 0);
 	if (src < 0)
 		display_error(err_msg, sr, 98);
-
 	elf_header = malloc(sizeof(Elf64_Ehdr));
 	if (!elf_header)
 	{
 		close_file(src);
 		display_error(err_msg, sr, 98);
 	}
-
 	bytes_r = read(src, elf_header, sizeof(Elf64_Ehdr));
-
 	if (bytes_r < 0)
 	{
 		free(elf_header);
@@ -347,24 +340,18 @@ int main(int __attribute__((__unused__)) argc, char **argv)
 				sr);
 		exit(98);
 	}
-
-
-	ehdr = elf_header->e_ident;
-	type = elf_header->e_type;
-	entry = elf_header->e_entry;
-
-	inspect_elf(ehdr);
+	inspect_elf(elf_header->e_ident);
 
 	printf("ELF Header:\n");
 
-	print_magic(ehdr);
-	print_class(ehdr);
-	print_data(ehdr);
-	print_vers(ehdr);
-	print_os(ehdr);
-	print_abi_version(ehdr);
-	print_elftype(ehdr, type);
-	print_entry_point(ehdr, entry);
+	print_magic(elf_header->e_ident);
+	print_class(elf_header->e_ident);
+	print_data(elf_header->e_ident);
+	print_vers(elf_header->e_ident);
+	print_os(elf_header->e_ident);
+	print_abi_version(elf_header->ident);
+	print_elftype(elf_header->e_ident, elf_header->type);
+	print_entry_point(elf_header->e_ident, elf_header->e_entry);
 
 	free(elf_header);
 	close_file(src);
