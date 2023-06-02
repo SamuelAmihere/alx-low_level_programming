@@ -96,6 +96,40 @@ void print_data(unsigned char *ehdr)
 }
 
 /**
+ * print_elftype - Prints ELF headeer file type
+ * @ehdr: a pointer to an Elf64_Ehdr structure
+ * @type: typeof ELF
+ * Return: Nothing
+ */
+void print_elftype(ehdr, type)
+{
+	if (ehdr[EI_DATA] == ELFDATA2MSB)
+		type = type >> 8;
+	printf("  Type:                              ");
+
+	switch (type)
+	{
+		case ET_EXEC:
+			printf("EXEC (Executable file)\n");
+			break;
+		case ET_CORE:
+			printf("CORE (Core file)\n");
+			break;
+		case ET_REL:
+			printf("REL (Relocatable file)\n");
+			break;
+		case ET_DYN:
+			printf("DYN (Shared object file)\n");
+			break;
+		case ET_NONE:
+			printf("NONE (None)\n");
+			break;
+		default:
+			printf("<unknown: %x>\n", type);
+	}
+}
+
+/**
  * print_class - prints class
  *
  * @ehdr: a pointer to an Elf64_Ehdr structure
@@ -280,6 +314,7 @@ int main(int argc, char **argv)
 	char *sr = argv[1];
 	char *err_msg = "Can't read file";
 	unsigned char *ehdr;
+	unsigned int entry;
 
 	src = open_file(sr, O_RDONLY, 0);
 	if (src < 0)
@@ -306,6 +341,7 @@ int main(int argc, char **argv)
 		printf("Usage: elf_header elf_filename");
 
 	ehdr = elf_header->e_ident;
+	entry = header->e_entry;
 
 	inspect_elf(ehdr);
 
@@ -317,7 +353,8 @@ int main(int argc, char **argv)
 	print_vers(ehdr);
 	print_os(ehdr);
 	print_abi_version(ehdr);
-	print_entry_point(ehdr);
+	print_elftype(ehdr, type);
+	print_entry_point(ehdr, entry);
 
 	free(elf_header);
 	close_file(src);
