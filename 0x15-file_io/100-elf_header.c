@@ -76,7 +76,7 @@ void print_magic(unsigned char *ehdr)
 
 void print_data(unsigned char *ehdr)
 {
-	printf("Data:                              ");
+	printf("  Data:                              ");
 
 	switch (ehdr[EI_DATA])
 	{
@@ -137,7 +137,7 @@ void print_elftype(unsigned char *ehdr, unsigned long int type)
  */
 void print_class(unsigned char *ehdr)
 {
-	printf("Class:                             ");
+	printf("  Class:                             ");
 
 	switch (ehdr[EI_CLASS])
 	{
@@ -165,7 +165,7 @@ void print_class(unsigned char *ehdr)
 
 void print_vers(unsigned char *ehdr)
 {
-	printf("Version:                           %d",
+	printf("  Version:                           %d",
 			ehdr[EI_VERSION]);
 
 	switch (ehdr[EI_VERSION])
