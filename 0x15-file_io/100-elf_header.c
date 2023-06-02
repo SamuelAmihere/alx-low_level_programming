@@ -59,11 +59,11 @@ void print_magic(unsigned char *ehdr)
 	printf(" Magic:   ");
 	for (i = 0; i < EI_NIDENT; i++)
 	{
-		printf("%02x ", ehdr[i]);
-		if (i == EI_NIDENT - 1)
-			printf("\n");
-		else
+		printf("%02x", ehdr[i]);
+		if (i != EI_NIDENT - 1)
 			printf(" ");
+		else
+			printf("\n");
 	}
 }
 
