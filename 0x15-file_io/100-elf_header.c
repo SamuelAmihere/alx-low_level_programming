@@ -110,23 +110,24 @@ void print_elftype(unsigned char *ehdr, unsigned long int type)
 	switch (type)
 	{
 		case ET_EXEC:
-			printf("EXEC (Executable file)\n");
+			printf("EXEC (Executable file)");
 			break;
 		case ET_CORE:
-			printf("CORE (Core file)\n");
+			printf("CORE (Core file)");
 			break;
 		case ET_REL:
-			printf("REL (Relocatable file)\n");
+			printf("REL (Relocatable file)");
 			break;
 		case ET_DYN:
-			printf("DYN (Shared object file)\n");
+			printf("DYN (Shared object file)");
 			break;
 		case ET_NONE:
-			printf("NONE (None)\n");
+			printf("NONE (None)");
 			break;
 		default:
-			printf("<unknown: %x>\n",(unsigned int)type);
+			printf("<unknown: %x>",(unsigned int)type);
 	}
+	printf("\n");
 }
 
 /**
@@ -142,17 +143,18 @@ void print_class(unsigned char *ehdr)
 	switch (ehdr[EI_CLASS])
 	{
 		case ELFCLASS64:
-			printf("ELF64\n");
+			printf("ELF64");
 			break;
 		case ELFCLASS32:
-			printf("ELF32\n");
+			printf("ELF32");
 			break;
 		case ELFCLASSNONE:
-			printf("none\n");
+			printf("none");
 			break;
 		default:
-			printf("<unknown: %x>\n", ehdr[EI_CLASS]);
+			printf("<unknown: %x>", ehdr[EI_CLASS]);
 	}
+	printf("\n");
 }
 
 
