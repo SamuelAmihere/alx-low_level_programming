@@ -319,7 +319,7 @@ void close_file(int fdesc)
  *
  * Return: 0 on Success
  */
-int main(int argc, char **argv)
+int main(int __attribute__((__unused__)) argc, char **argv)
 {
 	Elf64_Ehdr *elf_header;
 	int src, bytes_r;
