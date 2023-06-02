@@ -98,10 +98,10 @@ void print_data(unsigned char *ehdr)
 /**
  * print_elftype - Prints ELF headeer file type
  * @ehdr: a pointer to an Elf64_Ehdr structure
- * @type: typeof ELF
+ * @type: ELF type address
  * Return: Nothing
  */
-void print_elftype(unsigned char *ehdr, unsigned int type)
+void print_elftype(unsigned char *ehdr, unsigned long int type)
 {
 	if (ehdr[EI_DATA] == ELFDATA2MSB)
 		type = type >> 8;
@@ -125,7 +125,7 @@ void print_elftype(unsigned char *ehdr, unsigned int type)
 			printf("NONE (None)\n");
 			break;
 		default:
-			printf("<unknown: %x>\n", type);
+			printf("<unknown: %x>\n",(unsigned int)type);
 	}
 }
 
@@ -251,12 +251,25 @@ void print_abi_version(unsigned char *ehdr)
  * print_entry_point - prints entry point
  *
  * @ehdr: a pointer to an Elf64_Ehdr structure
+ * @entry: ELF entry point address.
  *
  * Return: nothing
  */
-void print_entry_point(unsigned char *ehdr)
+void print_entry_point(unsigned char *ehdr, unsigned long int entry)
 {
-	printf("  Entry point address: 0x%lx\n", (unsigned long) ehdr);
+	printf("  Entry point address:               ");
+
+	if (ehdr[EI_DATA] == ELFDATA2MSB)
+	{
+		entry = ((entry >> 8) & 0xFF00FF) | ((entry << 8) & 0xFF00FF00);
+		entry = (entry >> 16) | (entry << 16)
+	}
+
+	if (ehdr[EI_DATA] == ELFCLASS32)
+	{
+		printf("%#x\n", (unsigned int)entry);
+	} else
+		printf("%#lx\n", entry);
 }
 
 /**
@@ -314,7 +327,7 @@ int main(int argc, char **argv)
 	char *sr = argv[1];
 	char *err_msg = "Can't read file";
 	unsigned char *ehdr;
-	unsigned int type;
+	unsigned long int type;
 
 	src = open_file(sr, O_RDONLY, 0);
 	if (src < 0)
@@ -354,7 +367,7 @@ int main(int argc, char **argv)
 	print_os(ehdr);
 	print_abi_version(ehdr);
 	print_elftype(ehdr, type);
-	print_entry_point(ehdr);
+	print_entry_point(ehdr, type);
 
 	free(elf_header);
 	close_file(src);
