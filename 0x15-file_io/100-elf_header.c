@@ -261,8 +261,9 @@ void print_entry_point(unsigned char *ehdr, unsigned long int entry)
 
 	if (ehdr[EI_DATA] == ELFDATA2MSB)
 	{
-		entry = ((entry >> 8) & 0xFF00FF) | ((entry << 8) & 0xFF00FF00);
-		entry = (entry >> 16) | (entry << 16)
+		entry = ((entry >> 8) & 0xFF00FF) | ((entry << 8) &
+				0xFF00FF00);
+		entry = (entry >> 16) | (entry << 16);
 	}
 
 	if (ehdr[EI_DATA] == ELFCLASS32)
