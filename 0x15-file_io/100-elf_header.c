@@ -351,8 +351,6 @@ int main(int argc, char **argv)
 		exit(98);
 	}
 
-	if (argc != 2)
-		printf("Usage: elf_header elf_filename");
 
 	ehdr = elf_header->e_ident;
 	type = elf_header->e_type;
