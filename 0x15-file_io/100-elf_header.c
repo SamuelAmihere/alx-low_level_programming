@@ -257,9 +257,18 @@ void print_abi_version(unsigned char *ehdr)
  */
 void print_entry_point(unsigned char *ehdr, unsigned long int entry)
 {
-	(void)ehdr;
-	printf("  Entry point address:               0x%lx\n",
-			entry);
+	printf("  Entry point address:               ");
+
+	if (e_ident[EI_DATA] == ELFDATA2MSB)
+	{
+		entry = ((entry << 8) & 0xFF00FF00) | ((entry >> 8) &
+				0xFF00FF);
+		entry = (entry << 16) | (entry >> 16);
+	}
+	if (ehdr[EI_CLASS] != ELFCLASS32)
+		printf("%#lx\n", entry);
+	else
+		printf("%#x\n", (unsigned int)entry);
 }
 
 /**
