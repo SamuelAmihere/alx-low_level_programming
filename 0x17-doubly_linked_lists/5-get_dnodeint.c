@@ -10,7 +10,7 @@
  * Return: the address of the nth node, or NULL if it failed
  */
 dlistint_t *get_dnodeint_at_index(dlistint_t *head,
-		unsigned int index);
+		unsigned int index)
 {
 	listint_t *temp;
 	unsigned int i = 0;
