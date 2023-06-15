@@ -27,8 +27,9 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **head,
 
 	if (!new || idx > dlistint_len(*head))
 		return (NULL);
-
+	
 	new->n = n;
+
 	new->next = NULL;
 
 	prev = NULL;
