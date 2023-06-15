@@ -29,7 +29,7 @@ dlistint_t *insert_dnodeint_at_index(dlistint_t **head,
 
 	if (!new)
 		return (NULL);
-	
+
 	new->n = n;
 
 	if (idx == dlistint_len(*head))
