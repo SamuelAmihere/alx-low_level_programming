@@ -17,16 +17,18 @@ int calculateTmpValue(char *str, int xorValue);
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	char password[PASSWORD_LENGTH + 1];
-	char *codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
+	char *codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+"
+		"4mjW6fxqZeF3Qa1rPhdKIouk";
 	int inputLength = strlen(argv[1]);
 	int i, tmpValue;
 
-	if (inputLength == 0) {
+	if (inputLength == 0)
+	{
 		printf("No input provided.\n");
-		return 1;
+		return (1);
 	}
 
-	// Generate password characters based on input
+	/* Generate password characters based on input */
 	tmpValue = (inputLength ^ 59) & 63;
 	password[0] = generatePasswordChar(codex, tmpValue);
 
@@ -37,7 +39,8 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 	password[2] = generatePasswordChar(codex, tmpValue);
 
 	tmpValue = 0;
-	for (i = 0; i < inputLength; i++) {
+	for (i = 0; i < inputLength; i++)
+	{
 		if (argv[1][i] > tmpValue)
 			tmpValue = argv[1][i];
 	}
@@ -55,11 +58,12 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 
 	password[PASSWORD_LENGTH] = '\0';
 	printf("%s\n", password);
-	return 0;
+	return (0);
 }
 
 /**
- * generatePasswordChar - Generates a password character based on the given codex and value.
+ * generatePasswordChar - Generates a password character based
+ * on the given codex and value.
  * @codex: The codex containing the characters to choose from.
  * @value: The value used to index the codex.
  *
@@ -67,11 +71,12 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
  */
 char generatePasswordChar(char *codex, int value)
 {
-	return codex[value];
+	return (codex[value]);
 }
 
 /**
- * calculateTmpValue - Calculates the temporary value based on the given string and XOR value.
+ * calculateTmpValue - Calculates the temporary value based
+ * on the given string and XOR value.
  * @str: The input string.
  * @xorValue: The value to XOR with the calculated tmp value.
  *
@@ -86,5 +91,5 @@ int calculateTmpValue(char *str, int xorValue)
 	for (i = 0; i < inputLength; i++)
 		tmpValue += str[i];
 
-	return (tmpValue ^ xorValue) & 63;
+	return ((tmpValue ^ xorValue) & 63);
 }
