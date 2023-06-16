@@ -29,6 +29,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 		free(temp);
 		return (1);
 	}
+	prev = *head;
 	curr = (*head)->next;
 	while (curr && i < (index - 1))
 	{
