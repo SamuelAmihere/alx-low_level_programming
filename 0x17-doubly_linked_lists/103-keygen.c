@@ -17,8 +17,7 @@ int calculateTmpValue(char *str, int xorValue);
 int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	char password[PASSWORD_LENGTH + 1];
-	char *codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+"
-		"4mjW6fxqZeF3Qa1rPhdKIouk";
+	char *codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
 	int inputLength = strlen(argv[1]);
 	int i, tmpValue;
 
