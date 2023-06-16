@@ -1,8 +1,3 @@
-/*
- * File: 103-keygen.c
- * Auth: Gedeon Obae Gekonge
- */
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -13,9 +8,9 @@ char generatePasswordChar(char *codex, int value);
 int calculateTmpValue(char *str, int xorValue);
 
 /**
- * main - Generates and prints passwords for the crackme5 executable.
- * @argc: The number of arguments supplied to the program.
- * @argv: An array of pointers to the arguments.
+ * main - Entry point to generates and prints passwords.
+ * @argc: Arguments passed to the program.
+ * @argv: Array of pointers passed.
  *
  * Return: Always 0.
  */
@@ -23,37 +18,40 @@ int main(int __attribute__((__unused__)) argc, char *argv[])
 {
 	char password[PASSWORD_LENGTH + 1];
 	char *codex = "A-CHRDw87lNS0E9B2TibgpnMVys5XzvtOGJcYLU+4mjW6fxqZeF3Qa1rPhdKIouk";
-	int len = strlen(argv[1]);
-	int i, tmp;
+	int inputLength = strlen(argv[1]);
+	int i, tmpValue;
 
-	if (len == 0) {
+	if (inputLength == 0) {
 		printf("No input provided.\n");
 		return 1;
 	}
 
-	tmp = (len ^ 59) & 63;
-	password[0] = generatePasswordChar(codex, tmp);
+	// Generate password characters based on input
+	tmpValue = (inputLength ^ 59) & 63;
+	password[0] = generatePasswordChar(codex, tmpValue);
 
-	tmp = calculateTmpValue(argv[1], 79);
-	password[1] = generatePasswordChar(codex, tmp);
+	tmpValue = calculateTmpValue(argv[1], 79);
+	password[1] = generatePasswordChar(codex, tmpValue);
 
-	tmp = calculateTmpValue(argv[1], 85);
-	password[2] = generatePasswordChar(codex, tmp);
+	tmpValue = calculateTmpValue(argv[1], 85);
+	password[2] = generatePasswordChar(codex, tmpValue);
 
-	tmp = argv[1][0];
-	for (i = 0; i < len; i++) {
-		if (argv[1][i] > tmp)
-			tmp = argv[1][i];
+	tmpValue = 0;
+	for (i = 0; i < inputLength; i++) {
+		if (argv[1][i] > tmpValue)
+			tmpValue = argv[1][i];
 	}
-	srand(tmp ^ 14);
+	srand(tmpValue ^ 14);
 	password[3] = generatePasswordChar(codex, rand() & 63);
 
-	tmp = calculateTmpValue(argv[1], 239);
-	password[4] = generatePasswordChar(codex, tmp);
+	tmpValue = 0;
+	for (i = 0; i < inputLength; i++)
+		tmpValue += (argv[1][i] * argv[1][i]);
+	password[4] = generatePasswordChar(codex, (tmpValue ^ 239) & 63);
 
 	for (i = 0; i < argv[1][0]; i++)
-		tmp = rand();
-	password[5] = generatePasswordChar(codex, tmp ^ 229);
+		tmpValue = rand();
+	password[5] = generatePasswordChar(codex, (tmpValue ^ 229) & 63);
 
 	password[PASSWORD_LENGTH] = '\0';
 	printf("%s\n", password);
@@ -81,13 +79,12 @@ char generatePasswordChar(char *codex, int value)
  */
 int calculateTmpValue(char *str, int xorValue)
 {
-	int len = strlen(str);
-	int tmp = 0;
+	int inputLength = strlen(str);
+	int tmpValue = 0;
 	int i;
 
-	for (i = 0; i < len; i++)
-		tmp += str[i];
+	for (i = 0; i < inputLength; i++)
+		tmpValue += str[i];
 
-	return (tmp ^ xorValue) & 63;
+	return (tmpValue ^ xorValue) & 63;
 }
-
