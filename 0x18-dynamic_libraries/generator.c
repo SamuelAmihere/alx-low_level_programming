@@ -9,6 +9,7 @@ int rand(void)
 	switch (tracker)
 	{
 		case 0:
+			return (8);
 		case 1:
 			return (8);
 		case 2:
