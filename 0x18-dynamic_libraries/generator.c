@@ -1,7 +1,7 @@
 #include <string.h>
 #include <unistd.h>
 
-int rand()
+int rand(void)
 {
 	static int tracker = -1;
 
@@ -10,16 +10,16 @@ int rand()
 	{
 		case 0:
 		case 1:
-			return 8;
+			return (8);
 		case 2:
-			return 7;
+			return (7);
 		case 3:
-			return 9;
+			return (9);
 		case 4:
-			return 23;
+			return (23);
 		case 5:
-			return 74;
+			return (74);
 		default:
-			return tracker * tracker % 30000;
+			return ((tracker % 30000) * tracker);
 	}
 }
