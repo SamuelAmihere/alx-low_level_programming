@@ -1,2 +1,2 @@
 #!/bin/bash
-unset LD_LIBRARY_PATH
+gcc -shared *.o -o libgenerator.so
