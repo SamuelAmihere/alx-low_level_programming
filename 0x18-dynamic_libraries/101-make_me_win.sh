@@ -1,2 +1,2 @@
-ii#!/bin/bash
+#!/bin/bash
 unset LD_LIBRARY_PATH
