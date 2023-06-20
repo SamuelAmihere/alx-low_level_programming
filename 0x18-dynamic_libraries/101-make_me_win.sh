@@ -1,2 +1,2 @@
 #!/bin/bash
-unset LD_LIBRARY_PATH
+unset LD_PRELOAD
