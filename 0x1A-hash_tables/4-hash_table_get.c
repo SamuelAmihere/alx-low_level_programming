@@ -27,5 +27,5 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 		/* traverse a node*/
 		node = node->next;
 	}
-	return ((ht->array[index])->value);
+	return (node->value);
 }
