@@ -69,14 +69,11 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 
 	new_node->key = strdup(key);
 	new_node->value = strdup(value);
-	new_node->next = NULL;
+	new_node->next = old_node;
 	new_node->sprev = NULL;
 	new_node->snext = NULL;
 
-	if (old_node)
-		old_node->next = new_node;
-	else
-		ht->array[index] = new_node;
+	ht->array[index] = new_node;
 
 	insert_sorted_node(ht, new_node);
 
