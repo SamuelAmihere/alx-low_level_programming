@@ -60,6 +60,7 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
 			old_node->value = strdup(value);
 			return (1);
 		}
+		old_node = old_node->next;
 	}
 
 	new_node = malloc(sizeof(shash_node_t));
