@@ -201,7 +201,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 		curr_node = curr_node->sprev;
 	}
 
-	printf("}.\n");
+	printf("}\n");
 }
 
 /**
