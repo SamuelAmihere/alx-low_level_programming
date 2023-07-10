@@ -191,7 +191,7 @@ void shash_table_print_rev(const shash_table_t *ht)
 
 	printf("{");
 
-	if (ht):
+	if (ht != NULL)
 	{
 		while (curr_node)
 		{
