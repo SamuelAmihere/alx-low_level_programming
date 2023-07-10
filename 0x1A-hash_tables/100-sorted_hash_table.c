@@ -83,6 +83,8 @@ int shash_table_set(shash_table_t *ht, const char *key, const char *value)
  */
 void insert_sorted_node(shash_table_t *ht, shash_node_t *new_node)
 {
+	shash_node_t *current;
+
 	if (!ht->shead)
 	{
 		ht->shead = new_node;
@@ -96,7 +98,7 @@ void insert_sorted_node(shash_table_t *ht, shash_node_t *new_node)
 	} else
 	{
 		/* Find the correct position for the new node */
-		shash_node_t *current = ht->shead;
+		current = ht->shead;
 
 		while (current->snext &&
 				strcmp(new_node->key, current->snext->key) >=
