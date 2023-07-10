@@ -191,14 +191,17 @@ void shash_table_print_rev(const shash_table_t *ht)
 
 	printf("{");
 
-	while (curr_node)
+	if (ht):
 	{
-		printf("'%s': '%s'", curr_node->key, curr_node->value);
+		while (curr_node)
+		{
+			printf("'%s': '%s'", curr_node->key, curr_node->value);
 
-		if (curr_node->sprev)
-			printf(", ");
+			if (curr_node->sprev)
+				printf(", ");
 
-		curr_node = curr_node->sprev;
+			curr_node = curr_node->sprev;
+		}
 	}
 
 	printf("}\n");
