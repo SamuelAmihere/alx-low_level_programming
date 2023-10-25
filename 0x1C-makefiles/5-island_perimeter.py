@@ -1,11 +1,11 @@
 #!/usr/bin/python3
 """
-module determining perimeter
+module for perimeter
 """
 
 
 def island_perimeter(grid):
-    """returns the perimeter of an island
+    """returns a perimeter of an Island
     Args:
          grid (list) = [integers]
     """
@@ -15,15 +15,12 @@ def island_perimeter(grid):
     size = 0
     edges = 0
 
-    i = 0
-
-    while i < height:
-        for j in range(width):
-            if grid[i][j] == 1:
+    for k in range(height):
+        for l in range(width):
+            if grid[k][l] == 1:
                 size += 1
-                if (grid[i][j - 1] == 1 and j > 0):
+                if (l > 0 and grid[k][l - 1] == 1):
                     edges += 1
-                if (grid[i - 1][j] == 1 and i > 0):
+                if (k > 0 and grid[k - 1][l] == 1):
                     edges += 1
-        i++
-    return size * 4 - edges * 2
+    return ((size * 4) - (edges * 2))
