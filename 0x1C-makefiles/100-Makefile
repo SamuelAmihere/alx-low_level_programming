@@ -8,7 +8,7 @@ CFLAGS = -Wall -Werror -Wextra -pedantic
 
 #Building
 all: m.h $(OBJ)
-	$(CC) $(OBJ) -o $(NAME) $(CFLAGS)
+	$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
 
 #Cleaning
 clean:
